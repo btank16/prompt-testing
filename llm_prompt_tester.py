@@ -2,45 +2,19 @@ import tkinter as tk
 from tkinter import ttk, scrolledtext, messagebox, filedialog
 import customtkinter as ctk
 import json
-import requests
 import os
 from dotenv import load_dotenv
 from datetime import datetime
 import threading
-from typing import Optional, Dict, Any
+from typing import Dict, Any
 import jsonschema
 from jsonschema import validate, ValidationError
+from perplexity_client import PerplexityAPIClient
 
 load_dotenv()
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
-
-
-class PerplexityAPIClient:
-    def __init__(self, api_key: str):
-        self.api_key = api_key
-        self.base_url = "https://api.perplexity.ai"
-        self.headers = {
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        }
-
-    def chat_completion(self, model: str, messages: list, temperature: float = 0.7) -> Dict[str, Any]:
-        endpoint = f"{self.base_url}/chat/completions"
-
-        payload = {
-            "model": model,
-            "messages": messages,
-            "temperature": temperature
-        }
-
-        try:
-            response = requests.post(endpoint, json=payload, headers=self.headers)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            raise Exception(f"API Request failed: {str(e)}")
 
 
 class LLMPromptTesterGUI:
@@ -128,7 +102,12 @@ class LLMPromptTesterGUI:
 
         self.system_prompt_text = ctk.CTkTextbox(parent, height=100)
         self.system_prompt_text.pack(fill=tk.BOTH, padx=10, pady=5)
-        self.system_prompt_text.insert("1.0", "You are a helpful assistant. Please respond in valid JSON format.")
+
+        url_label = ctk.CTkLabel(parent, text="URL (Optional - for specific webpage reference):")
+        url_label.pack(anchor=tk.W, padx=10, pady=(10, 0))
+
+        self.url_entry = ctk.CTkEntry(parent, placeholder_text="https://example.com")
+        self.url_entry.pack(fill=tk.X, padx=10, pady=5)
 
     def setup_output_panel(self, parent):
         output_label = ctk.CTkLabel(parent, text="Output Response",
@@ -239,10 +218,30 @@ class LLMPromptTesterGUI:
 
             messages.append({"role": "user", "content": prompt})
 
+            response_format = None
+            json_schema_str = self.json_format_text.get("1.0", tk.END).strip()
+
+            if json_schema_str and json_schema_str != '{\n  "type": "object",\n  "properties": {\n    \n  }\n}':
+                try:
+                    schema = json.loads(json_schema_str)
+                    response_format = {
+                        "type": "json_schema",
+                        "json_schema": {
+                            "schema": schema
+                        }
+                    }
+                except json.JSONDecodeError:
+                    pass
+
+            url = self.url_entry.get().strip()
+            if not url:
+                url = None
+
             response = self.api_client.chat_completion(
                 model=self.model_var.get(),
                 messages=messages,
-                temperature=0.7
+                response_format=response_format,
+                url=url
             )
 
             end_time = datetime.now()
@@ -279,6 +278,7 @@ class LLMPromptTesterGUI:
             "timestamp": datetime.now().isoformat(),
             "model": self.model_var.get(),
             "prompt": self.prompt_text.get("1.0", tk.END).strip(),
+            "url": self.url_entry.get().strip(),
             "response": response,
             "response_time": response_time
         })
@@ -322,6 +322,7 @@ class LLMPromptTesterGUI:
         self.prompt_text.delete("1.0", tk.END)
         self.response_text.delete("1.0", tk.END)
         self.raw_response_text.delete("1.0", tk.END)
+        self.url_entry.delete(0, tk.END)
         self.token_label.configure(text="Tokens: N/A")
         self.time_label.configure(text="Response Time: N/A")
         self.validation_label.configure(text="JSON Valid: N/A", text_color="white")
@@ -342,6 +343,7 @@ class LLMPromptTesterGUI:
                 "prompt": self.prompt_text.get("1.0", tk.END).strip(),
                 "system_prompt": self.system_prompt_text.get("1.0", tk.END).strip(),
                 "expected_json": self.json_format_text.get("1.0", tk.END).strip(),
+                "url": self.url_entry.get().strip(),
                 "response": self.current_response,
                 "timestamp": datetime.now().isoformat()
             }
@@ -368,6 +370,8 @@ class LLMPromptTesterGUI:
                 self.system_prompt_text.insert("1.0", test_data.get("system_prompt", ""))
                 self.json_format_text.delete("1.0", tk.END)
                 self.json_format_text.insert("1.0", test_data.get("expected_json", ""))
+                self.url_entry.delete(0, tk.END)
+                self.url_entry.insert(0, test_data.get("url", ""))
 
                 messagebox.showinfo("Success", "Test loaded successfully")
 

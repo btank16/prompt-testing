@@ -277,7 +277,22 @@ class LLMPromptTesterGUI:
 
         self.json_format_text = ctk.CTkTextbox(scroll_frame, height=100)
         self.json_format_text.pack(fill=tk.BOTH, padx=10, pady=5)
-        self.json_format_text.insert("1.0", '{}')
+        # Insert placeholder example for Perplexity API response_format
+        placeholder_json = '''{
+  "type": "json_schema",
+  "json_schema": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "number"
+        }
+      },
+      "required": ["answer"]
+    }
+  }
+}'''
+        self.json_format_text.insert("1.0", placeholder_json)
         self.json_format_text.configure(state="disabled")
 
     def setup_output_panel(self, parent):
@@ -403,9 +418,10 @@ class LLMPromptTesterGUI:
                 json_str = self.json_format_text.get("1.0", tk.END).strip()
                 if json_str and json_str != '{}':
                     try:
-                        # Validate JSON and create response format
-                        json.loads(json_str)
-                        response_format = {"type": "json"}
+                        # Parse the JSON format configuration
+                        json_config = json.loads(json_str)
+                        # Pass the entire configuration as response_format
+                        response_format = json_config
                     except json.JSONDecodeError:
                         pass
 

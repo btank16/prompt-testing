@@ -1,0 +1,154 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to find the 30 year mortgage rates in ohio today with 3.5% down",
+  "system_prompt": "",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "day",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"answer\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\"answer\"]\n    }\n  }\n}",
+  "response": {
+    "id": "445ebb34-dc26-4d29-a492-b0a0f8cc4483",
+    "model": "sonar",
+    "created": 1758854043,
+    "usage": {
+      "prompt_tokens": 21,
+      "completion_tokens": 7,
+      "total_tokens": 28,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.nerdwallet.com/mortgages/mortgage-rates/ohio",
+      "https://www.nerdwallet.com/mortgages/mortgage-rates/illinois",
+      "https://www.bankrate.com/mortgages/30-year-mortgage-rates/",
+      "https://www.bankrate.com/mortgages/mortgage-rates/iowa/",
+      "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-thursday-september-25-2025/",
+      "https://www.bankrate.com/mortgages/mortgage-rates/new-york/",
+      "https://www.livenowfox.com/news/mortgage-rates-decreasing-most-states-data",
+      "https://admortgage.com/blog/fha-loan-vs-va-loan/",
+      "https://www.pennymac.com/rates",
+      "https://apps.legislature.ky.gov/publicservices/pio/release.html",
+      "https://www.nerdwallet.com/best/banking/1-year-cd-rates"
+    ],
+    "search_results": [
+      {
+        "title": "Compare Today's Mortgage and Refinance Rates in Ohio - NerdWallet",
+        "url": "https://www.nerdwallet.com/mortgages/mortgage-rates/ohio",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-26",
+        "snippet": "On Thursday evening, September 25, 2025, the average interest rate on a 30-year fixed-rate mortgage rose four basis points to 6.44% APR, compared to yesterday."
+      },
+      {
+        "title": "Compare Today's Mortgage and Refinance Rates in Illinois",
+        "url": "https://www.nerdwallet.com/mortgages/mortgage-rates/illinois",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-26",
+        "snippet": "Illinois's average mortgage rates today ; 30-year Fixed, 6.47%, 6.48% ; 30-year Fixed FHA, 5.75%, 6.57% ; 30-year Fixed VA, 6.00%, 6.21% ; 20-year Fixed, 6.06% ..."
+      },
+      {
+        "title": "Compare 30-Year Mortgage Rates Today | Bankrate",
+        "url": "https://www.bankrate.com/mortgages/30-year-mortgage-rates/",
+        "date": "2025-09-26",
+        "last_updated": "2025-09-26",
+        "snippet": "On Thursday, September 25, 2025, the current average interest rate for a 30-year fixed mortgage is 6.33%. If you're in the market for a mortgage refinance, ..."
+      },
+      {
+        "title": "Compare Iowa Mortgage and Refinance Rates | Bankrate",
+        "url": "https://www.bankrate.com/mortgages/mortgage-rates/iowa/",
+        "date": "2025-09-26",
+        "last_updated": "2025-09-25",
+        "snippet": "Looking for home mortgage rates in Iowa? View and compare interest rates from local banks, IA credit unions and brokers, from Bankrate."
+      },
+      {
+        "title": "30-year mortgage rates rise - How long should buyers wait? - Bankrate",
+        "url": "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-thursday-september-25-2025/",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-25",
+        "snippet": "30-year mortgage rates rise - How long should buyers wait? | Today's mortgage and refinance rates, September 25, 2025 ; 30-year fixed, 6.33%, 6.23%, +0.10% ; 15- ..."
+      },
+      {
+        "title": "Current New York Mortgage and Refinance Rates | Bankrate",
+        "url": "https://www.bankrate.com/mortgages/mortgage-rates/new-york/",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-26",
+        "snippet": "On Thursday, September 25, 2025, the national average 30-year fixed mortgage APR is 6.40%. The national average 30-year fixed refinance APR is 6.73%, according ..."
+      },
+      {
+        "title": "Mortgage rates are decreasing the most in these states, data shows",
+        "url": "https://www.livenowfox.com/news/mortgage-rates-decreasing-most-states-data",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-25",
+        "snippet": "While the average mortgage interest rate has stayed above 6% on 30-year fixed mortgages during 2025, the rate varies widely by state."
+      },
+      {
+        "title": "FHA Loan vs VA Loan: What Brokers Choose | AD Mortgage",
+        "url": "https://admortgage.com/blog/fha-loan-vs-va-loan/",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-25",
+        "snippet": "For FHA loans, a FICO score over 580 qualifies for a 3.5% down payment and 500-579 qualifies for 10% down. Do VA Loans Have PMI? No. VA loans do not require ..."
+      },
+      {
+        "title": "Today's Mortgage Rates in the US | Compare Loan Products",
+        "url": "https://www.pennymac.com/rates",
+        "date": "2025-09-26",
+        "last_updated": "2025-09-26",
+        "snippet": "Compare today's 30-year mortgage rates, refinance mortgage rates, and current interest rates with Pennymac ... September 25, 2025. Read More."
+      },
+      {
+        "title": "Kentucky General Assembly - Legislative Research Commission",
+        "url": "https://apps.legislature.ky.gov/publicservices/pio/release.html",
+        "date": "2025-09-25",
+        "last_updated": "2025-09-25",
+        "snippet": "Livestreams of legislative action can be viewed through feeds provided by Kentucky Educational Television (KET) and the Legislative Research Commission (LRC)."
+      },
+      {
+        "title": "13 Best 1-Year CD Rates for September 2025 (Up to 4.30%)",
+        "url": "https://www.nerdwallet.com/best/banking/1-year-cd-rates",
+        "date": "2025-09-26",
+        "last_updated": "2025-09-26",
+        "snippet": "Today's mortgage rates \u00b7 30 year mortgage rates \u00b7 5-year ARM rates \u00b7 3-year ARM rates \u00b7 FHA mortgage rates \u00b7 VA mortgage rates \u00b7 Best mortgage lenders \u00b7 Best ..."
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\":6.44}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-09-25T22:40:59.761315"
+}

@@ -69,8 +69,8 @@ class PerplexityAPIClient:
 
         # Add optional parameters only if provided
         if response_format:
-            # Only support JSON response format
-            if response_format.get("type") == "json":
+            # Support both simple JSON and JSON schema formats
+            if response_format.get("type") in ["json", "json_schema"]:
                 payload["response_format"] = response_format
 
         if url:

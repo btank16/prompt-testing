@@ -1,18 +1,31 @@
-# LLM Prompt Tester - Perplexity Sonar API
+# LLM Prompt Tester - Perplexity Grounded LLM API
 
-A modular Python GUI application for testing prompts with Perplexity's Sonar API models, featuring structured output support and JSON response validation.
+A comprehensive Python GUI application for testing prompts with Perplexity's Grounded LLM API, featuring advanced search capabilities, filtering options, and JSON response support.
 
 ## Features
 
+### Core Capabilities
 - **Multiple Sonar Models**: Test with sonar, sonar-pro, sonar-reasoning, and sonar-deep-research
-- **Structured Outputs**: Support for Perplexity's structured output format using JSON schemas
-- **JSON Validation**: Define expected JSON schemas and validate responses
-- **Token Tracking**: Monitor input, output, and total token usage
-- **Response Time**: Track API response times
-- **Test Management**: Save and load test cases
-- **Export Results**: Export test history to JSON
+- **Grounded Web Search**: Real-time web search integration with citation tracking
+- **JSON Response Support**: Request and validate JSON-formatted responses
+- **Token & Cost Tracking**: Monitor input, output, total tokens, and source citations
+- **Response Time Monitoring**: Track API response latency
+- **Test Management**: Save, load, and export test configurations
 - **Secure API Key Storage**: Store API keys in .env file (git-ignored)
-- **Modular Architecture**: Separated API client and GUI logic for easy extension
+
+### Advanced Search Parameters
+- **Domain Filtering**: Whitelist or blacklist up to 3 domains (use '-' prefix to exclude)
+- **Recency Filter**: Filter results by time (hour, day, week, month)
+- **Date Range Filtering**: Specify before/after dates in MM/DD/YYYY format
+- **Search Context Size**: Control search depth (low, medium, high)
+- **Location-Based Search**: Provide latitude, longitude, and country for localized results
+- **Return Options**: Toggle images and related questions in responses
+
+### LLM Parameters
+- **Temperature Control**: Adjustable creativity (0-2, default 0.2)
+- **Max Tokens**: Control response length
+- **Top-p Sampling**: Nucleus sampling parameter
+- **Frequency & Presence Penalties**: Fine-tune response generation
 
 ## Setup
 
@@ -38,15 +51,40 @@ python llm_prompt_tester.py
 
 ## Usage
 
+### Basic Setup
 1. **Configure API Key**: The app will automatically load your API key from `.env`
 2. **Select Model**: Choose from available Sonar models
 3. **Enter Prompt**: Type your test prompt in the input field
-4. **Set Expected JSON Format** (Optional): Define a JSON schema for structured outputs and validation
-   - The schema will be sent as `response_format` parameter for structured outputs
-   - Responses will be validated against the provided schema
-5. **Add System Prompt** (Optional): Customize the system message
-6. **Run Test**: Click "Run Test" to send the request
-7. **View Results**: See the response, token usage, and validation status
+
+### Search Configuration
+1. **Reference URL** (Optional): Provide a specific webpage URL for context
+2. **Domain Filter**: Enter up to 3 domains separated by commas (e.g., `docs.com, -spam.com`)
+3. **Recency Filter**: Select time range for search results
+4. **Date Filters**: Set before/after dates for precise filtering
+5. **Search Context**: Choose between low, medium, or high context retrieval
+6. **Additional Options**: Enable images or related questions in responses
+
+### LLM Configuration
+1. **Temperature**: Adjust response creativity (default 0.2)
+2. **Max Tokens**: Set maximum response length
+3. **Advanced Parameters**: Configure top-p, frequency penalty, and presence penalty
+
+### JSON Response
+1. **Enable JSON Mode**: Check "Request JSON Response" to receive structured data
+2. **Custom Format**: Optionally provide expected JSON structure for validation
+
+### Location Settings
+1. **Coordinates**: Enter latitude and longitude for location-based search
+2. **Country Code**: Specify ISO country code (e.g., US, UK, FR)
+
+### Running Tests
+1. **Run Test**: Click to send request with all configured parameters
+2. **View Results**:
+   - Main response content
+   - Search results with citations
+   - Related questions (if enabled)
+   - Token usage and response time
+3. **Save/Load Tests**: Store and retrieve test configurations for reuse
 
 ## File Structure
 
@@ -71,10 +109,22 @@ python llm_prompt_tester.py
 
 ## API Integration
 
-The application uses Perplexity's structured output format when a JSON schema is provided:
+The application leverages Perplexity's Grounded LLM API with comprehensive parameter support:
 
-- **Model**: Selected Sonar model
-- **Messages**: Array of role/content message objects
-- **Response Format**: Optional JSON schema wrapped in Perplexity's format structure
+### Supported Parameters
+- **Search Filtering**: Domain filters, recency filters, date ranges
+- **Search Options**: Context size, images, related questions
+- **Location**: Latitude, longitude, country for localized search
+- **LLM Controls**: Temperature, max tokens, top-p, penalties
+- **Response Format**: JSON-only responses with validation
 
-The modular design allows easy addition of other LLM providers by creating new client modules.
+### Response Structure
+The API returns:
+- **Main Content**: The generated response
+- **Search Results**: Array of sources with titles, URLs, and dates
+- **Related Questions**: Follow-up questions for continued exploration
+- **Usage Statistics**: Token counts and costs
+- **Citations**: Embedded references to source materials
+
+### Extensibility
+The modular architecture with separate `perplexity_client.py` allows easy integration of additional LLM providers or API endpoints.

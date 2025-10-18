@@ -1,0 +1,237 @@
+{
+  "model": "sonar",
+  "prompt": "I am looking to purchase a multifamily home at 6603 Gertrude Ave, Cleveland, OH 44105. I need you to find a comparable multifamily properties that have sold recently in Slavic Village, Cleveland, Ohio. Please note the difference between properties for sale and properties that have sold. Provide the address of all the properties that you can find in an array.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "-zillow.com, realtor.com, homes.com",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"comp_addresses\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"comp_addresses\"]\n    }\n  }\n}",
+  "response": {
+    "id": "80ee21c8-5981-43bf-88a4-22b92afba4be",
+    "model": "sonar",
+    "created": 1760395995,
+    "usage": {
+      "prompt_tokens": 127,
+      "completion_tokens": 30,
+      "total_tokens": 157,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.008,
+        "total_cost": 0.008
+      }
+    },
+    "citations": [
+      "https://www.homes.com/property/8008-force-ave-cleveland-oh/jygkqs5n3tetj/",
+      "https://www.realtor.com/realestateandhomes-detail/6603-Gertrude-Ave_Cleveland_OH_44105_M49603-75797",
+      "https://www.homes.com/property/7428-ottawa-rd-cleveland-oh/gb33nhfjnyl8y/",
+      "https://www.homes.com/property/6603-gertrude-ave-cleveland-oh/zycvvykwm2vhn/",
+      "https://www.homes.com/property/3635-e-49th-st-cleveland-oh/z9g3h68gq4x9n/",
+      "https://www.realtor.com/realestateandhomes-detail/6603-Gertrude-Ave-Down_Cleveland_OH_44105_M96139-09957",
+      "https://www.homes.com/property/3816-e-57th-st-cleveland-oh/16vx38ybt8sxp/",
+      "https://www.realtor.com/realestateandhomes-search/44105/pg-3",
+      "https://www.homes.com/cleveland-oh/44105/multi-family-homes-for-sale/",
+      "https://www.realtor.com/realestateandhomes-detail/6301-Gertrude-Ave_Cleveland_OH_44105_M46715-55297",
+      "https://www.homes.com/property/3610-e-61st-st-cleveland-oh/z3xngff9vmxyv/",
+      "https://www.realtor.com/rentals/details/6603-Gertrude-Ave-Down_Cleveland_OH_44105_M96139-09957",
+      "https://www.realtor.com/realestateandhomes-search/Broadway-Slavic-Village_Cleveland_OH/show-recently-sold",
+      "https://www.homes.com/property/6603-gertrude-ave-cleveland-oh-unit-down/j54j376sv4srh/",
+      "https://www.realtor.com/realestateandhomes-search/Broadway-Slavic-Village_Cleveland_OH",
+      "https://www.realtor.com/propertyrecord-search/44105/Gertrude-Ave",
+      "https://www.homes.com/cleveland-oh/north-broadway-neighborhood/sold/",
+      "https://www.realtor.com/realestateandhomes-detail/6706-Gertrude-Ave_Cleveland_OH_44105_M30537-40307",
+      "https://www.homes.com/property/3620-e-63rd-st-cleveland-oh-unit-front-unit/fp0wvdg8lr5r9/"
+    ],
+    "search_results": [
+      {
+        "title": "8008 Force Ave, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/8008-force-ave-cleveland-oh/jygkqs5n3tetj/",
+        "date": "2025-05-30",
+        "last_updated": "2025-10-13",
+        "snippet": "SOLD JUN 27, 2025 ... This 4-bed, 2-bath multifamily in Broadway\u2013Slavic Village ... This Home. $52,000. Slavic Village. Cleveland Metro Area. U.S.. Sold Price.",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave, Cleveland, OH 44105 [Updated 9/9]",
+        "url": "https://www.realtor.com/realestateandhomes-detail/6603-Gertrude-Ave_Cleveland_OH_44105_M49603-75797",
+        "date": "2025-09-05",
+        "last_updated": "2025-10-11",
+        "snippet": "6603 Gertrude Ave, Cleveland, OH 44105 is for sale. View 42 photos of this 7 bed, 2 bath, 1834 sqft. multi family home with a list price of $149900.",
+        "source": "web"
+      },
+      {
+        "title": "7428 Ottawa Rd, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/7428-ottawa-rd-cleveland-oh/gb33nhfjnyl8y/",
+        "date": "2022-01-05",
+        "last_updated": "2025-10-13",
+        "snippet": "7428 Ottawa Rd, Cleveland, OH 44105 - photo 1. 1/1. NOT LISTED FOR SALE. Add to Favorites; Add a Note; Driving Directions; Copy Link; Create Valuation Report. 7428 Ottawa Rd Cleveland, OH 44105 \u00b7 Slavic Village Neighborhood. Est. Value: $85,000 - $91,000. 4 Beds. 1 Bath. 1,376 Sq Ft. $64/Sq Ft Est. ...",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/6603-gertrude-ave-cleveland-oh/zycvvykwm2vhn/",
+        "date": "2025-05-09",
+        "last_updated": "2025-10-13",
+        "snippet": "Property Details. Home Type. Multi-Family. Est. Annual Taxes. $1,321. Year Built. Built in 1920. Lot Details. 5,201 Sq Ft Lot; South Facing Home. Parking. 2 Car ...",
+        "source": "web"
+      },
+      {
+        "title": "3635 E 49th St, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/3635-e-49th-st-cleveland-oh/z9g3h68gq4x9n/",
+        "date": null,
+        "last_updated": "2025-10-13",
+        "snippet": "3635 E 49th St, Cleveland, OH 44105 - 2136 sqft home . Browse photos, take a 3D tour & get detailed information about this property.",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave Unit Down, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/6603-Gertrude-Ave-Down_Cleveland_OH_44105_M96139-09957",
+        "date": "2025-06-17",
+        "last_updated": "2025-10-13",
+        "snippet": "Property details ; Bedrooms. Bedrooms: 3 ; Bathrooms. Full Bathrooms: 1 ; Heating and Cooling. Heating Features: Forced Air ; Interior Features. Flooring: Laminate.",
+        "source": "web"
+      },
+      {
+        "title": "3816 E 57th St, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/3816-e-57th-st-cleveland-oh/16vx38ybt8sxp/",
+        "date": null,
+        "last_updated": "2025-10-13",
+        "snippet": "This home is located at 3816 E 57th St, Cleveland, OH 44105. 3816 E 57th St is a home located in Cuyahoga County with nearby schools including Anton Grdina School, Bolton, and Andrew J. Rickoff School. See All. Create a Home Valuation Report for This Property. The Home Valuation Report is an in-dept...",
+        "source": "web"
+      },
+      {
+        "title": "44105, OH Homes for Sale & Real Estate",
+        "url": "https://www.realtor.com/realestateandhomes-search/44105/pg-3",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property detail for 6603 Gertrude Ave Cleveland, OH 44105. Multi-family home for sale. $149,900. 7bed; 2bath; 1,834sqft1,834 square feet; 5,201sqft lot5,201 ...",
+        "source": "web"
+      },
+      {
+        "title": "Multi-Family Homes & Duplexes for Sale in 44105",
+        "url": "https://www.homes.com/cleveland-oh/44105/multi-family-homes-for-sale/",
+        "date": "2025-07-09",
+        "last_updated": "2025-10-13",
+        "snippet": "Take a look at this investment opportunity in in the heart of Cleveland's Slavic Village\u2014a neighborhood with strong rental demand and ongoing redevelopment. Located near the Opportunity Corridor, this duplex offers a generous layout with spacious rooms. The prime location provides easy access to maj...",
+        "source": "web"
+      },
+      {
+        "title": "6301 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/6301-Gertrude-Ave_Cleveland_OH_44105_M46715-55297",
+        "date": null,
+        "last_updated": null,
+        "snippet": "6301 Gertrude Ave, Cleveland, OH 44105 ; Property type. Other ; Year built. 1910 ; Last sold. $3.9M in 2023 ; Price per sqft. $927 ; Listing price median. $139,000.",
+        "source": "web"
+      },
+      {
+        "title": "3610 E 61st St, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/3610-e-61st-st-cleveland-oh/z3xngff9vmxyv/",
+        "date": null,
+        "last_updated": "2025-10-13",
+        "snippet": "This home is located at 3610 E 61st St, Cleveland, OH 44105. 3610 E 61st St is a home located in Cuyahoga County with nearby schools including Anton Grdina School, Bolton, and Andrew J. Rickoff School. See All. Create a Home Valuation Report for This Property. The Home Valuation Report is an in-dept...",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave Unit Down, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/rentals/details/6603-Gertrude-Ave-Down_Cleveland_OH_44105_M96139-09957",
+        "date": null,
+        "last_updated": null,
+        "snippet": "View photos, pricing history, and other rental property details for the condo located at 6603 Gertrude Ave Unit Down, Cleveland, OH 44105.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in Broadway Slavic Village, Cleveland",
+        "url": "https://www.realtor.com/realestateandhomes-search/Broadway-Slavic-Village_Cleveland_OH/show-recently-sold",
+        "date": null,
+        "last_updated": "2025-02-28",
+        "snippet": "Recently sold homes in Broadway Slavic Village, OH had a median listing home price of $89,000. There were 243 properties sold in Broadway Slavic Village, OH, which spent an average of 39 days on the market. Some of the hottest neighborhoods nearby are ...",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave Unit Down, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/6603-gertrude-ave-cleveland-oh-unit-down/j54j376sv4srh/",
+        "date": null,
+        "last_updated": "2025-10-13",
+        "snippet": "6603 Gertrude Ave Unit Down is a home located in Cuyahoga County with nearby schools including Anton Grdina School, Bolton, and Andrew J. Rickoff School.",
+        "source": "web"
+      },
+      {
+        "title": "Broadway Slavic Village, Cleveland Homes for Sale & Real ...",
+        "url": "https://www.realtor.com/realestateandhomes-search/Broadway-Slavic-Village_Cleveland_OH",
+        "date": null,
+        "last_updated": "2025-03-07",
+        "snippet": "Realtor.com\u00ae has 135 homes for sale in Broadway Slavic Village, Cleveland, OH. The median listing price is $89000. Browse listings and find your dream home today.",
+        "source": "web"
+      },
+      {
+        "title": "Home property records near Gertrude Ave, Cleveland OH",
+        "url": "https://www.realtor.com/propertyrecord-search/44105/Gertrude-Ave",
+        "date": "2025-08-27",
+        "last_updated": "2025-09-03",
+        "snippet": "6603 Gertrude Ave, Cleveland, 44105, OH. For sale. $149,900. 6500 Gertrude Ave, Cleveland, 44105, OH. For rent. $700 - $700/mo. 6709 Gertrude Ave, Cleveland, ...",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold North Broadway, Cleveland Real Estate & ...",
+        "url": "https://www.homes.com/cleveland-oh/north-broadway-neighborhood/sold/",
+        "date": "2025-10-08",
+        "last_updated": "2025-10-13",
+        "snippet": "Search 44 recently sold homes in the North Broadway neighborhood of Cleveland. Get real time updates. Connect directly with listing agents. Get the most details on Homes.com.",
+        "source": "web"
+      },
+      {
+        "title": "6706 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/6706-Gertrude-Ave_Cleveland_OH_44105_M30537-40307",
+        "date": null,
+        "last_updated": null,
+        "snippet": "View 25 photos for 6706 Gertrude Ave, Cleveland, OH 44105, a 5 bed, 2 bath, 2693 Sq. Ft. multi family home built in 1962 that was last sold on 03/24/2025.",
+        "source": "web"
+      },
+      {
+        "title": "3620 E 63rd St Unit Front unit, Cleveland, OH 44105",
+        "url": "https://www.homes.com/property/3620-e-63rd-st-cleveland-oh-unit-front-unit/fp0wvdg8lr5r9/",
+        "date": "2025-05-14",
+        "last_updated": "2025-08-08",
+        "snippet": "3620 E 63rd St Unit Front unit is a home located in Cuyahoga County with nearby schools including Anton Grdina School, Bolton, and Andrew J. Rickoff School. See All. Create a Home Valuation Report for This Property.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"comp_addresses\":[\"8008 Force Ave, Cleveland, OH 44105\",\"6706 Gertrude Ave, Cleveland, OH 44105\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T18:53:24.473146"
+}

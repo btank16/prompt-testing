@@ -1,0 +1,129 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to find property information on the home at 8827 Park Heights Ave, Garfield Heights, OH 44125. Please search online real estate sites and the cuyahoga county website where public information is posted on properties. I need you to find the following information and present it in json format: number of units, total square footage, total beds, total baths, square footage of each unit, bedrooms in each unit, and bathrooms in each unit.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"unit_count\": {\n          \"type\": \"number\"\n        },\n        \"total_sq_ft\": {\n          \"type\": \"number\"\n        },\n        \"total_bed\": {\n          \"type\": \"number\"\n        },\n        \"total_bath\": {\n          \"type\": \"number\"\n        },\n        \"unit_sq_ft\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"number\"}\n        },\n        \"unit_bed\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"number\"}\n        },\n        \"unit_bath\": {\n          \"type\": \"array\",\n          \"items\": { \"type\": \"number\"}\n        }\n      },\n      \"required\": [\"unit_count\", \"total_sq_ft\", \"total_bed\", \"unit_sq_ft\", \"unit_bed\", \"unit_bath\"]\n    }\n  }\n}",
+  "response": {
+    "id": "5a78fbac-dc56-4f13-a0ef-88094b2018b9",
+    "model": "sonar",
+    "created": 1760059488,
+    "usage": {
+      "prompt_tokens": 145,
+      "completion_tokens": 48,
+      "total_tokens": 193,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.008,
+        "total_cost": 0.008
+      }
+    },
+    "citations": [
+      "https://www.zillow.com/homedetails/8827-Park-Heights-Ave-Garfield-Heights-OH-44125/33595188_zpid/",
+      "https://www.bhgre.com/home/detail/oh/garfield-heights/8827-park-heights-ave/lid-P00800000Gyw8K7LwmePZPZICFV8Wfcr5r0HCO3E",
+      "https://www.homes.com/property/8827-park-heights-ave-cleveland-oh/02j6gntzyq4j4/",
+      "https://www.realtor.com/realestateandhomes-detail/8827-Park-Heights-Ave_Cleveland_OH_44125_M36918-21073",
+      "https://www.movoto.com/cleveland-oh/8827-park-heights-ave-cleveland-oh-44125/pid_khk6twyskh/",
+      "https://www.trulia.com/home/8827-park-heights-ave-garfield-heights-oh-44125-33595188",
+      "https://www.realtor.com/realestateandhomes-detail/8827-Park-Heights-Ave_Garfield-Heights_OH_44125_M36918-21073"
+    ],
+    "search_results": [
+      {
+        "title": "8827 Park Heights Ave, Garfield Heights, OH 44125",
+        "url": "https://www.zillow.com/homedetails/8827-Park-Heights-Ave-Garfield-Heights-OH-44125/33595188_zpid/",
+        "date": "2025-10-07",
+        "last_updated": "2025-10-07",
+        "snippet": "Zillow has 11 photos of this $190000 5 beds, 3 baths, -- sqft multi family home located at 8827 Park Heights Ave, Garfield Heights, OH 44125 built in 1922.",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Avenue, Garfield Heights, OH 44125",
+        "url": "https://www.bhgre.com/home/detail/oh/garfield-heights/8827-park-heights-ave/lid-P00800000Gyw8K7LwmePZPZICFV8Wfcr5r0HCO3E",
+        "date": "2025-09-27",
+        "last_updated": "2025-10-02",
+        "snippet": "Welcome to 8827 Park Heights Avenue, Garfield Heights, OH 44125. This 6 bed, 3 bath, 0 sqft Multi-family is listed as active with MLS# ...",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Ave, Cleveland, OH 44125",
+        "url": "https://www.homes.com/property/8827-park-heights-ave-cleveland-oh/02j6gntzyq4j4/",
+        "date": "2025-09-24",
+        "last_updated": "2025-10-03",
+        "snippet": "Property Details. Home Type. Multi-Family. Year Built. Built in 1922. Lot Details. 5,001 Sq Ft Lot. Parking. 2 Car Detached Garage. Home Design. Brick Exterior ...",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Ave, Garfield Heights, OH 44125",
+        "url": "https://www.realtor.com/realestateandhomes-detail/8827-Park-Heights-Ave_Cleveland_OH_44125_M36918-21073",
+        "date": null,
+        "last_updated": null,
+        "snippet": "8827 Park Heights Ave, Garfield Heights, OH 44125 ; Property type. Multi Family ; Year built. 1922 ; Last sold. $130K in 2024 ; Price per sqft. $52 ; Garage. 2 Car.",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Ave, Garfield Heights, OH 44125",
+        "url": "https://www.movoto.com/cleveland-oh/8827-park-heights-ave-cleveland-oh-44125/pid_khk6twyskh/",
+        "date": null,
+        "last_updated": null,
+        "snippet": "8827 Park Heights Ave is a 4 beds, 2 baths, 2489 Sqft multi-family built in 1922 on a 5000 Sqft lot and located in the Garfield Heights neighborhood in ...",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Ave, Garfield Heights, OH 44125",
+        "url": "https://www.trulia.com/home/8827-park-heights-ave-garfield-heights-oh-44125-33595188",
+        "date": "2018-11-30",
+        "last_updated": "2025-03-29",
+        "snippet": "8827 Park Heights Ave, Garfield Heights, OH 44125 is a 5 bed, 3 bath Multi-Family Home listed for $190000. Turn-Key Triplex Investment Opportunity ...",
+        "source": "web"
+      },
+      {
+        "title": "8827 Park Heights Ave, Garfield Heights, OH 44125",
+        "url": "https://www.realtor.com/realestateandhomes-detail/8827-Park-Heights-Ave_Garfield-Heights_OH_44125_M36918-21073",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Turn-Key Triplex Investment Opportunity - Renovated & Rent Ready! Discover this beautiful 3-unit triplex, with 2 of the units featuring 2 spacious bedrooms ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"unit_count\":3,\"total_sq_ft\":2489,\"total_bed\":6,\"total_bath\":3,\"unit_sq_ft\":[],\"unit_bed\":[2,2,1],\"unit_bath\":[1,1,1]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-09T21:55:13.985196"
+}

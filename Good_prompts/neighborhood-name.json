@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to tell me what neighborhood of Cleveland Ohio the followin address is in: 6603 Gertrude Ave, Cleveland, OH 44105. Please provide only the neighborhood name in your response",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "zillow.com",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"neighborhood\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"neighborhood\"]\n    }\n  }\n}",
+  "response": {
+    "id": "930e9de7-33cc-4a80-b297-b67c1350d3a4",
+    "model": "sonar",
+    "created": 1760401841,
+    "usage": {
+      "prompt_tokens": 92,
+      "completion_tokens": 7,
+      "total_tokens": 99,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.zillow.com/b/6603-gertrude-ave-cleveland-oh-Cjjxpb/",
+      "https://www.zillow.com/homedetails/6607-Gertrude-Ave-Cleveland-OH-44105/33423943_zpid/",
+      "https://www.zillow.com/homedetails/6600-Gertrude-Ave-Cleveland-OH-44105/33423953_zpid/",
+      "https://www.zillow.com/homedetails/6525-Gertrude-Ave-Cleveland-OH-44105/33423945_zpid/",
+      "https://www.zillow.com/homedetails/6603-Gertrude-Ave-Cleveland-OH-44105/33423944_zpid/",
+      "https://www.zillow.com/little-bohemia-cleveland-oh/rent-townhomes/",
+      "https://www.zillow.com/homedetails/6603-Gertrude-Ave-2-Cleveland-OH-44105/443621627_zpid/",
+      "https://www.zillow.com/cleveland-oh-44105/duplex/",
+      "https://www.zillow.com/cleveland-oh/under-300000/3_p/",
+      "https://www.zillow.com/homedetails/6603-Gertrude-Ave-1-Cleveland-OH-44105/443621614_zpid/"
+    ],
+    "search_results": [
+      {
+        "title": "6603 Gertrude Ave Cleveland OH",
+        "url": "https://www.zillow.com/b/6603-gertrude-ave-cleveland-oh-Cjjxpb/",
+        "date": "2025-03-02",
+        "last_updated": "2025-03-02",
+        "snippet": "What neighborhood is 6603 Gertrude Ave in? 6603 Gertrude Ave is in the South Broadway neighborhood in Cleveland, OH. Hide. OH \u00b7 Cuyahoga County \u00b7 Cleveland ...",
+        "source": "web"
+      },
+      {
+        "title": "6607 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.zillow.com/homedetails/6607-Gertrude-Ave-Cleveland-OH-44105/33423943_zpid/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "6607 Gertrude Ave, Cleveland, OH 44105 is currently not for sale. The 968 Square Feet single family home is a 3 beds, 1 bath property.",
+        "source": "web"
+      },
+      {
+        "title": "6600 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.zillow.com/homedetails/6600-Gertrude-Ave-Cleveland-OH-44105/33423953_zpid/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "This 1335 square foot single family home has 3 bedrooms and 2.0 bathrooms. This home is located at 6600 Gertrude Ave, Cleveland, OH 44105.",
+        "source": "web"
+      },
+      {
+        "title": "6525 Gertrude Ave, Cleveland, OH 44105",
+        "url": "https://www.zillow.com/homedetails/6525-Gertrude-Ave-Cleveland-OH-44105/33423945_zpid/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "6525 Gertrude Ave, Cleveland, OH 44105 is currently not for sale. The 1116 Square Feet multi family home is a 2 beds, 1 bath property.",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave, Cleveland, OH 44105 | MLS #5154532",
+        "url": "https://www.zillow.com/homedetails/6603-Gertrude-Ave-Cleveland-OH-44105/33423944_zpid/",
+        "date": "2025-09-09",
+        "last_updated": "2025-09-05",
+        "snippet": "Neighborhood: South Broadway. To navigate the map with touch gestures double-tap and hold your finger on the map, then drag the map.",
+        "source": "web"
+      },
+      {
+        "title": "Townhomes For Rent in Little Bohemia Cleveland - Zillow",
+        "url": "https://www.zillow.com/little-bohemia-cleveland-oh/rent-townhomes/",
+        "date": null,
+        "last_updated": "2024-01-08",
+        "snippet": "6603 Gertrude Ave, Cleveland, OH. $1,200+3 bd \u00b7 $1,450+4 bd \u00b7 1947 E 85th St ... Little Bohemia Neighborhood Houses Rentals. Old Brooklyn Houses for Rent ...",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave #2, Cleveland, OH 44105",
+        "url": "https://www.zillow.com/homedetails/6603-Gertrude-Ave-2-Cleveland-OH-44105/443621627_zpid/",
+        "date": "2025-03-18",
+        "last_updated": "2025-03-18",
+        "snippet": "6603 Gertrude Ave #2, Cleveland, OH 44105 is a townhouse listed for rent at $1450 /mo. The 1400 Square Feet townhouse is a 4 beds, 1 bath townhouse.",
+        "source": "web"
+      },
+      {
+        "title": "44105 Duplex & Triplex Homes For Sale - 48 Homes",
+        "url": "https://www.zillow.com/cleveland-oh-44105/duplex/",
+        "date": "2025-07-19",
+        "last_updated": "2025-07-19",
+        "snippet": "6603 Gertrude Ave, Cleveland, OH 44105. EXP REALTY, LLC.. Listing provided by ... 44105 Neighborhood Homes. South Broadway Homes for Sale$76,855; Lee ...",
+        "source": "web"
+      },
+      {
+        "title": "Homes for Sale Under 300K in Cleveland OH",
+        "url": "https://www.zillow.com/cleveland-oh/under-300000/3_p/",
+        "date": "2025-03-17",
+        "last_updated": "2025-03-17",
+        "snippet": "6603 Gertrude Ave, Cleveland, OH 44105. EXP REALTY, LLC.. Listing provided by ... Cleveland Neighborhood Homes. Old Brooklyn Homes for Sale$160,932; South ...",
+        "source": "web"
+      },
+      {
+        "title": "6603 Gertrude Ave #1, Cleveland, OH 44105",
+        "url": "https://www.zillow.com/homedetails/6603-Gertrude-Ave-1-Cleveland-OH-44105/443621614_zpid/",
+        "date": "2025-10-11",
+        "last_updated": "2025-10-11",
+        "snippet": "6603 Gertrude Ave #1, Cleveland, OH 44105 is a townhouse listed for rent at $1300 /mo. The 952 Square Feet townhouse is a 3 beds, 1 bath townhouse.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"neighborhood\":\"South Broadway\"}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T20:33:12.117431"
+}

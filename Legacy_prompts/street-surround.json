@@ -1,0 +1,210 @@
+{
+  "model": "sonar",
+  "prompt": "A Highway is road designed for high-speed, controlled-access treavel\nA State Route is a road numbered at the state level\nArterials are high-capacity roads that move traffic within a city or region\n\nI need information on the slavic village neighborhood in cleveland ohio. I need a list of Highways, State Routes, and Arterials that border the neighborhood. Then I need a list of State Routes and Arterials that go through the middle of the neighborhood. Please limit your output to a street name.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"border_streets\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        },\n        \"internal_streets\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"border_streets\", \"internal_streets\"]\n    }\n  }\n}",
+  "response": {
+    "id": "96ab26f1-3586-4add-95c0-e4dd588d80c6",
+    "model": "sonar",
+    "created": 1760194762,
+    "usage": {
+      "prompt_tokens": 148,
+      "completion_tokens": 110,
+      "total_tokens": 258,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.008,
+        "total_cost": 0.008
+      }
+    },
+    "citations": [
+      "https://mapcarta.com/22690148",
+      "https://en.wikipedia.org/wiki/Ohio_State_Route_43",
+      "https://kristinamorales.com/guides/slavic-village-cleveland-oh/",
+      "https://www.clevelandmetroparks.com/getmedia/8b1b8e81-7809-4f9f-9a2f-691067ab7073/Broadway-Slavic-Village-Morgana-Run-Trail-Community-Assessment.pdf",
+      "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+      "https://planning.clevelandohio.gov/cwp/tt_assts.php",
+      "https://www.mapquest.com/us/ohio/village-market-slavic-village-462910376",
+      "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+      "https://www.slavicvillage.org/about/ecodistrict/",
+      "https://teachingcleveland.org/highways/",
+      "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+      "http://www.clevelandmemory.org/freeways/index.html",
+      "https://locallogic.co/insights/US-OH/Cleveland/Broadway-Slavic%20Village/",
+      "https://onlinepubs.trb.org/Onlinepubs/hrbbulletin/153/153-003.pdf",
+      "https://en.wikipedia.org/wiki/Ohio_State_Route_87",
+      "https://www.slavicvillage.org/about/neighborhood-plan/"
+    ],
+    "search_results": [
+      {
+        "title": "Slavic Village Map - Quarter - City of Cleveland, Ohio, USA - Mapcarta",
+        "url": "https://mapcarta.com/22690148",
+        "date": "2019-01-01",
+        "last_updated": "2025-07-24",
+        "snippet": "Broadway\u2013Slavic Village is a neighborhood on the Southeast side of Cleveland, Ohio ... Location: City of Cleveland, Cuyahoga County, Ohio, Midwest, United States ...",
+        "source": "web"
+      },
+      {
+        "title": "Ohio State Route 43 - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ohio_State_Route_43",
+        "date": "2025-04-24",
+        "last_updated": "2025-04-24",
+        "snippet": "State Route 43 (SR 43) is a mainly north\u2013south state highway that runs through the northeastern quadrant of the US state of Ohio.",
+        "source": "web"
+      },
+      {
+        "title": "Slavic Village Neighborhood Guide - Cleveland - Kristina Morales",
+        "url": "https://kristinamorales.com/guides/slavic-village-cleveland-oh/",
+        "date": null,
+        "last_updated": "2025-05-16",
+        "snippet": "Slavic Village is located on Cleveland's southeastern side. As one of Cleveland's oldest neighborhoods, Slavic Village has a long history and a distinct ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] Broadway/Slavic Village Morgana Run Trail - Cleveland Metroparks",
+        "url": "https://www.clevelandmetroparks.com/getmedia/8b1b8e81-7809-4f9f-9a2f-691067ab7073/Broadway-Slavic-Village-Morgana-Run-Trail-Community-Assessment.pdf",
+        "date": null,
+        "last_updated": "2025-08-16",
+        "snippet": "The vast majority of the study area consists of two-lane neighborhood roads with on-street parking allowed on both sides. The major arterials such as Fleet and ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] Cleveland Neighborhoods Map - Lake Erie",
+        "url": "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+        "date": null,
+        "last_updated": "2025-09-06",
+        "snippet": "SLAVIC VILLAGE. UNION\u2013MILES. Mount. PLEASANT. LEE\u2013. HARVARD. LEE\u2013 seville. OLD BROOKLYN. BROOKLYN. CENTRE. MIDTOWN. Downtown. Tremont. Shaker. Square. Ohio.",
+        "source": "web"
+      },
+      {
+        "title": "Transportation and Transit - Cleveland City Planning Commission",
+        "url": "https://planning.clevelandohio.gov/cwp/tt_assts.php",
+        "date": "2015-01-01",
+        "last_updated": "2025-10-04",
+        "snippet": "Streets: The City contains approximately 300 miles of arterial and collector roadways and 1,000 miles of residential city streets which provide access to all ...",
+        "source": "web"
+      },
+      {
+        "title": "Slavic Village, 5106 Fleet Ave, Cleveland, OH 44105, US - MapQuest",
+        "url": "https://www.mapquest.com/us/ohio/village-market-slavic-village-462910376",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Get more information for Village Market - Slavic Village in Cleveland, OH. See reviews, map, get the address, and find directions.",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] ROADMAP - Just Communities",
+        "url": "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+        "date": null,
+        "last_updated": "2025-10-11",
+        "snippet": "Broadway-Slavic Village, one of Cleveland's oldest and most well-known neighborhoods, is a five square mile urban community located two miles southeast of ...",
+        "source": "web"
+      },
+      {
+        "title": "EcoDistrict - Slavic Village Development",
+        "url": "https://www.slavicvillage.org/about/ecodistrict/",
+        "date": null,
+        "last_updated": "2025-08-10",
+        "snippet": "Read on for more information. Slavic Village Boundaries. Chuck EcoDistricts ... 5620 Broadway Ave. Cleveland, OH, 44127. Get Directions. Hours of Operation.",
+        "source": "web"
+      },
+      {
+        "title": "Highways in Cleveland",
+        "url": "https://teachingcleveland.org/highways/",
+        "date": "2010-03-17",
+        "last_updated": "2025-07-05",
+        "snippet": "Proposed arterial highways for Greater Cleveland exhibit, 1940 ... Broadway/Slavic Village, Buckeye Neighborhood, Campus District, Central ...",
+        "source": "web"
+      },
+      {
+        "title": "Broadway-Slavic Village Cleveland, OH 44105, Neighborhood Profile",
+        "url": "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+        "date": "2025-04-04",
+        "last_updated": "2025-10-11",
+        "snippet": "Broadway-Slavic Village median real estate price is $86,641, which is less expensive than 93.1% of Ohio neighborhoods and 96.9% of all U.S. neighborhoods.",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland's Forgotten Freeways - The Cleveland Memory Project",
+        "url": "http://www.clevelandmemory.org/freeways/index.html",
+        "date": null,
+        "last_updated": "2025-09-04",
+        "snippet": "We present 17 route location studies, including the proposed routes for the Clark, Lee and Heights freeways that were never built.",
+        "source": "web"
+      },
+      {
+        "title": "Insights for Broadway-Slavic Village - Local Logic",
+        "url": "https://locallogic.co/insights/US-OH/Cleveland/Broadway-Slavic%20Village/",
+        "date": "2024-09-10",
+        "last_updated": "2024-11-07",
+        "snippet": "Broadway-Slavic Village is a neighborhood known for its relaxed atmosphere and convenient access to green spaces. It offers a variety of housing options, ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] Comprehensive Arterial Highway Plan for the Cleveland ...",
+        "url": "https://onlinepubs.trb.org/Onlinepubs/hrbbulletin/153/153-003.pdf",
+        "date": null,
+        "last_updated": "2024-10-17",
+        "snippet": "Recognizing the need for a comprehensive arterial highway plan based on the pros- pective development of the county and comprehensive and up-to-date traffic ...",
+        "source": "web"
+      },
+      {
+        "title": "Ohio State Route 87 - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ohio_State_Route_87",
+        "date": "2025-01-17",
+        "last_updated": "2025-03-20",
+        "snippet": "State Route 87 (SR 87) is an east\u2013west highway in northeastern Ohio, a US state. Its western terminus is at Public Square in downtown Cleveland.",
+        "source": "web"
+      },
+      {
+        "title": "Neighborhood Plan - Slavic Village Development",
+        "url": "https://www.slavicvillage.org/about/neighborhood-plan/",
+        "date": "2024-08-11",
+        "last_updated": "2025-07-17",
+        "snippet": "To help guide that future, Slavic Village Development and the City of Cleveland are teaming up to create the Slavic Village Neighborhood Plan from 2025-2026.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"border_streets\":[\"Interstate 77 (I-77) on the west\",\"Norfolk Southern Railroad tracks with 74th Avenue and Mill Creek Falls to the south\",\"Norfolk Southern tracks behind East 82nd Avenue to the east\",\"Norfolk Southern tracks between Morgan and Bessemer to the north\",\"Pershing Avenue on the northern and western boundaries\"],\"internal_streets\":[\"Ohio State Route 43 (OH-43) running diagonally through the center of the neighborhood\",\"Fleet Avenue (a major arterial)\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-11T11:03:39.087507"
+}

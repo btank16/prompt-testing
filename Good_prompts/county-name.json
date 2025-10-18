@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "What county is columbus ohio in? Just provide me with the county name",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"county_name\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"county_name\"]\n    }\n  }\n}",
+  "response": {
+    "id": "38fb2428-4c54-4945-9198-16cd239b2b1a",
+    "model": "sonar",
+    "created": 1760410479,
+    "usage": {
+      "prompt_tokens": 65,
+      "completion_tokens": 8,
+      "total_tokens": 73,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://en.wikipedia.org/wiki/Franklin_County,_Ohio",
+      "https://data.census.gov/profile/Columbus_city,_Franklin_County,_Ohio?g=060XX00US3904918000",
+      "https://www.hotbot.com/answers/what-county-is-columbus-ohio-in",
+      "https://en.wikipedia.org/wiki/Columbus,_Ohio",
+      "https://columbusregion.com/meet-the-region/counties/franklin-county/",
+      "https://columbusregion.com/meet-the-region/counties/",
+      "https://ce.naco.org/?county_info=39049",
+      "https://www.franklincountyohio.gov/Home",
+      "https://www.fccourts.org",
+      "https://www.franklincountyohio.gov/County-Government/About-Our-Community"
+    ],
+    "search_results": [
+      {
+        "title": "Franklin County, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Franklin_County,_Ohio",
+        "date": "2002-09-27",
+        "last_updated": "2025-10-09",
+        "snippet": "Residents named the county in honor of Benjamin Franklin. In 1816, Franklin County's Columbus became Ohio's state capital. Surveyors laid out the city ...",
+        "source": "web"
+      },
+      {
+        "title": "Columbus city, Franklin County, Ohio - Census Bureau Profile",
+        "url": "https://data.census.gov/profile/Columbus_city,_Franklin_County,_Ohio?g=060XX00US3904918000",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Columbus city, Franklin County, Ohio is a city, town, place equivalent, or township located in Franklin County, Ohio. Columbus city, Franklin County, ...",
+        "source": "web"
+      },
+      {
+        "title": "What county is columbus ohio in?",
+        "url": "https://www.hotbot.com/answers/what-county-is-columbus-ohio-in",
+        "date": "2024-07-09",
+        "last_updated": "2025-10-09",
+        "snippet": "Columbus, Ohio, is primarily located in Franklin County. As the state capital and the largest city in Ohio, Columbus plays a significant role in ...",
+        "source": "web"
+      },
+      {
+        "title": "Columbus, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Columbus,_Ohio",
+        "date": "2001-07-28",
+        "last_updated": "2025-09-30",
+        "snippet": "U.S. Geological Survey Geographic Names Information System: Columbus, Ohio ... Franklin County, Ohio: Franklin County Engineer. ^ Foster, Stephanie. \"Meet ...",
+        "source": "web"
+      },
+      {
+        "title": "Franklin County Demographic, Workforce & Education Data",
+        "url": "https://columbusregion.com/meet-the-region/counties/franklin-county/",
+        "date": "2025-03-10",
+        "last_updated": "2025-09-05",
+        "snippet": "Explore Franklin County. Home to Ohio's capital city of Columbus, Franklin County is full of beautiful and historic old neighborhoods, sprawling metro parks ...",
+        "source": "web"
+      },
+      {
+        "title": "Explore the Counties",
+        "url": "https://columbusregion.com/meet-the-region/counties/",
+        "date": "2024-12-16",
+        "last_updated": "2025-10-11",
+        "snippet": "Explore the Counties \u00b7 Franklin \u00b7 Delaware \u00b7 Fairfield \u00b7 Knox \u00b7 Licking \u00b7 Logan \u00b7 Madison \u00b7 Marion ...",
+        "source": "web"
+      },
+      {
+        "title": "Franklin County, OH",
+        "url": "https://ce.naco.org/?county_info=39049",
+        "date": "2022-01-01",
+        "last_updated": "2025-07-11",
+        "snippet": "Franklin County, OH ; County Details. County Seat: Columbus. Year Organized: 1803. Total Square Miles: 532. 2020 Population: ; County Structure. Government Type: ...",
+        "source": "web"
+      },
+      {
+        "title": "Franklin County, Ohio",
+        "url": "https://www.franklincountyohio.gov/Home",
+        "date": "2025-06-25",
+        "last_updated": "2025-10-13",
+        "snippet": "Franklin County, Ohio, is a community for every resident, every day. It is one of the largest and most diversely populated counties in Ohio and a cultural ...",
+        "source": "web"
+      },
+      {
+        "title": "Franklin County Court of Common Pleas",
+        "url": "https://www.fccourts.org",
+        "date": null,
+        "last_updated": "2025-10-13",
+        "snippet": "The Franklin County Court of Common Pleas - General Division has original jurisdictional authority over all felony cases and all civil cases.",
+        "source": "web"
+      },
+      {
+        "title": "About Our Community - Franklin County, Ohio",
+        "url": "https://www.franklincountyohio.gov/County-Government/About-Our-Community",
+        "date": "2025-01-01",
+        "last_updated": "2025-09-23",
+        "snippet": "Franklin County was named for American statesman, scientist, and inventor Benjamin Franklin, and was established on April 30, 1803. The county's structure grew ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"county_name\":\"Franklin County\"}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T22:54:57.281116"
+}

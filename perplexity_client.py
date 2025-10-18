@@ -46,9 +46,9 @@ class PerplexityAPIClient:
             search_after_date_filter: Filter results after date (MM/DD/YYYY format)
             search_before_date_filter: Filter results before date (MM/DD/YYYY format)
             search_context_size: Amount of search context ('low', 'medium', 'high')
+            user_location: Location for localized search (lat, lon, country)
             return_images: Whether to include images in response
             return_related_questions: Whether to return related follow-up questions
-            user_location: Location for localized search (lat, lon, country)
             temperature: Sampling temperature (0-2)
             max_tokens: Maximum tokens in response
             top_p: Nucleus sampling parameter
@@ -92,20 +92,24 @@ class PerplexityAPIClient:
         if search_before_date_filter:
             payload["search_before_date_filter"] = search_before_date_filter
 
-        # Search options
+        # Build web_search_options if we have search_context_size or user_location
+        web_search_options = {}
         if search_context_size:
             if search_context_size in ['low', 'medium', 'high']:
-                payload["search_context_size"] = search_context_size
+                web_search_options["search_context_size"] = search_context_size
+
+        if user_location:
+            web_search_options["user_location"] = user_location
+
+        # Only add web_search_options to payload if it has content
+        if web_search_options:
+            payload["web_search_options"] = web_search_options
 
         if return_images is not None:
             payload["return_images"] = return_images
 
         if return_related_questions is not None:
             payload["return_related_questions"] = return_related_questions
-
-        # Location for localized search
-        if user_location:
-            payload["user_location"] = user_location
 
         # Standard LLM parameters
         if temperature is not None:

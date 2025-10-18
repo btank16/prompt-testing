@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to find me mortgage rates for a 30 year fixed mortgage in Ohio. Note that I am putting 20% down as a down payment",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information",
+  "url": "",
+  "search_params": {
+    "domain_filter": "freddiemac.com, nerdwallet.com, bankrate.com",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"interest_rate\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\"interest_rate\"]\n    }\n  }\n}",
+  "response": {
+    "id": "36544d96-3023-4c21-84ac-3afdb982fedc",
+    "model": "sonar",
+    "created": 1760399056,
+    "usage": {
+      "prompt_tokens": 80,
+      "completion_tokens": 8,
+      "total_tokens": 88,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.nerdwallet.com/mortgages/mortgage-rates",
+      "https://www.bankrate.com/mortgages/30-year-mortgage-rates/",
+      "https://www.bankrate.com/mortgages/30-year-refinance-rates/",
+      "https://www.bankrate.com/mortgages/mortgage-rates/",
+      "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-friday-october-3-2025/",
+      "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-tuesday-october-7-2025/",
+      "https://www.bankrate.com/mortgages/mortgage-rates/ohio/",
+      "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-wednesday-october-8-2025/",
+      "https://www.bankrate.com/mortgages/rate-trends/",
+      "https://www.bankrate.com/mortgages/todays-rates/"
+    ],
+    "search_results": [
+      {
+        "title": "Compare Today's Mortgage Rates | Monday, October 13, ...",
+        "url": "https://www.nerdwallet.com/mortgages/mortgage-rates",
+        "date": "2025-05-02",
+        "last_updated": "2025-10-13",
+        "snippet": "On Monday afternoon, October 13, 2025, the average interest rate on a 30-year fixed-rate mortgage rose six basis points to 6.25% APR, compared to yesterday. The ...",
+        "source": "web"
+      },
+      {
+        "title": "Compare 30-Year Mortgage Rates Today",
+        "url": "https://www.bankrate.com/mortgages/30-year-mortgage-rates/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "On Monday, October 13, 2025, the current average interest rate for a 30-year fixed mortgage is 6.34%. If you're in the market for a mortgage refinance, today's ...",
+        "source": "web"
+      },
+      {
+        "title": "Today's 30-year refinance rates",
+        "url": "https://www.bankrate.com/mortgages/30-year-refinance-rates/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "For today, Monday, October 13, 2025, the national average 30-year fixed refinance interest rate is 6.61%. Meanwhile, the current average 30-year fixed mortgage ...",
+        "source": "web"
+      },
+      {
+        "title": "Compare current mortgage rates for today",
+        "url": "https://www.bankrate.com/mortgages/mortgage-rates/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "For today, Monday, October 13, 2025, the current average 30-year fixed mortgage interest rate is 6.34%. If you're looking to refinance your current mortgage, ...",
+        "source": "web"
+      },
+      {
+        "title": "Today's mortgage and refinance rates, October 3, 2025",
+        "url": "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-friday-october-3-2025/",
+        "date": "2025-10-03",
+        "last_updated": "2025-10-13",
+        "snippet": "30-year mortgage rates increase - How long will rates stay here? | Today's mortgage and refinance rates, October 3, 2025 ; 30-year fixed, 6.36% ...",
+        "source": "web"
+      },
+      {
+        "title": "30-year mortgage rates increase - When should you lock?",
+        "url": "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-tuesday-october-7-2025/",
+        "date": "2025-10-07",
+        "last_updated": "2025-10-11",
+        "snippet": "Another positive is that 30-year mortgage rates in September and October have been at the lowest levels seen in all of 2025 \u2014 hovering in the 6 ...",
+        "source": "web"
+      },
+      {
+        "title": "Current Ohio Mortgage & Refinance Rates",
+        "url": "https://www.bankrate.com/mortgages/mortgage-rates/ohio/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "As of Monday, October 13, 2025, current interest rates in Ohio are 6.34% for a 30-year fixed mortgage and 5.69% for a 15-year fixed mortgage. Ohio mortgage ...",
+        "source": "web"
+      },
+      {
+        "title": "30-year mortgage rates remain the same - Should you wait?",
+        "url": "https://www.bankrate.com/mortgages/todays-rates/mortgage-rates-for-wednesday-october-8-2025/",
+        "date": "2025-10-08",
+        "last_updated": "2025-10-12",
+        "snippet": "Another positive is that 30-year mortgage rates in September and October have been at the lowest levels seen in all of 2025 \u2014 hovering in the 6 ...",
+        "source": "web"
+      },
+      {
+        "title": "Mortgage Rate Trends And Predictions For Oct. 9-15, 2025",
+        "url": "https://www.bankrate.com/mortgages/rate-trends/",
+        "date": "2025-10-08",
+        "last_updated": "2025-10-13",
+        "snippet": "The average 30-year fixed rate was 6.39 percent as of Oct 8. \u2014 the same as the previous two weeks \u2014 according to Bankrate's national survey of ...",
+        "source": "web"
+      },
+      {
+        "title": "Daily Mortgage Rates Archive",
+        "url": "https://www.bankrate.com/mortgages/todays-rates/",
+        "date": "2025-10-13",
+        "last_updated": "2025-10-13",
+        "snippet": "| Today's mortgage and refinance rates, October 13, 2025. The current average rate for a 30-year fixed mortgage is 6.34, The average 15-year fixed-mortgage rate ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"interest_rate\":6.34}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T19:44:45.340057"
+}

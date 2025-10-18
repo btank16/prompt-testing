@@ -1,0 +1,111 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to review the socioeconomic and demographic data of cleveland ohio. Please also review each individual neighborhood of cleveland ohio as well. Please tell me the two neighborhoods that are similar in socioeconomic status and emographics as the north broadway neighborhood.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"similar_neighborhoods\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"similar_neighborhoods\"]\n    }\n  }\n}",
+  "response": {
+    "id": "715178d8-bfe4-48a1-9234-2d9797ade866",
+    "model": "sonar",
+    "created": 1760484707,
+    "usage": {
+      "prompt_tokens": 99,
+      "completion_tokens": 19,
+      "total_tokens": 118,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.communitysolutions.com/resources/dorman-if-clevelands-higher-and-lower-income-households-were-represented-by-just-100-households-each-where-would-they-live",
+      "https://www.news5cleveland.com/news/local-news/new-demographic-data-shows-how-all-34-of-clevelands-neighborhoods-compare",
+      "https://statisticalatlas.com/place/Ohio/Cleveland/Household-Income",
+      "https://www.communitysolutions.com/resources/new-cleveland-neighborhood-fact-sheets-initial-thoughts-takeaways",
+      "https://www.clevelandfed.org/publications/economic-commentary/2021/ec-202118-the-racial-wealth-gap-and-access-to-opportunity-neighborhoods"
+    ],
+    "search_results": [
+      {
+        "title": "If Cleveland's higher and lower income households were ...",
+        "url": "https://www.communitysolutions.com/resources/dorman-if-clevelands-higher-and-lower-income-households-were-represented-by-just-100-households-each-where-would-they-live",
+        "date": "2024-10-21",
+        "last_updated": "2025-08-30",
+        "snippet": "Cleveland's higher income households are largely concentrated on the West side (60) and Downtown (13). Just over a quarter (26) of these high-income households ...",
+        "source": "web"
+      },
+      {
+        "title": "New demographic data shows how all 34 of Cleveland's ...",
+        "url": "https://www.news5cleveland.com/news/local-news/new-demographic-data-shows-how-all-34-of-clevelands-neighborhoods-compare",
+        "date": "2024-09-12",
+        "last_updated": "2025-10-14",
+        "snippet": "The data provides an extensive look at employment, income, poverty, education, housing and health in each of Cleveland's neighborhoods.",
+        "source": "web"
+      },
+      {
+        "title": "Household Income in Cleveland, Ohio (City) - Statistical Atlas",
+        "url": "https://statisticalatlas.com/place/Ohio/Cleveland/Household-Income",
+        "date": null,
+        "last_updated": "2025-09-12",
+        "snippet": "Household Income by Neighborhood in Cleveland. There are 36 neighborhoods that are fully or partially contained within Cleveland (24 fully and 12 partially).",
+        "source": "web"
+      },
+      {
+        "title": "Initial thoughts on the new 2021 Cleveland Neighborhood Fact Sheets",
+        "url": "https://www.communitysolutions.com/resources/new-cleveland-neighborhood-fact-sheets-initial-thoughts-takeaways",
+        "date": "2021-09-13",
+        "last_updated": "2024-09-18",
+        "snippet": "The neighborhoods with the highest poverty rates were located primarily on the city's east side, with over 45 percent of the population in ...",
+        "source": "web"
+      },
+      {
+        "title": "The Racial Wealth Gap and Access to Opportunity Neighborhoods",
+        "url": "https://www.clevelandfed.org/publications/economic-commentary/2021/ec-202118-the-racial-wealth-gap-and-access-to-opportunity-neighborhoods",
+        "date": "2021-09-09",
+        "last_updated": "2025-10-13",
+        "snippet": "Black households with incomes of $175,000 per year live in neighborhoods with similar unemployment rates as white households with incomes under ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"similar_neighborhoods\":[\"Buckeye-Shaker\",\"St. Clair-Superior\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-14T19:32:22.003967"
+}

@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to look into the property history at a home in Brooklyn Ohio. Please find the 2024 taxes for the property at the following address: 4367 Ridge Rd, Brooklyn, OH 44144",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "realtor.com",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"annual_taxes\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\"annual_taxes\"]\n    }\n  }\n}",
+  "response": {
+    "id": "5f7cb135-319c-49e9-987c-b0a9a3df969d",
+    "model": "sonar",
+    "created": 1760401239,
+    "usage": {
+      "prompt_tokens": 93,
+      "completion_tokens": 9,
+      "total_tokens": 102,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.realtor.com/realestateandhomes-detail/4325-Ridge-Rd_Brooklyn_OH_44144_M43207-85318",
+      "https://www.realtor.com/realestateandhomes-detail/4367-Ridge-Crest-Dr_Copley_OH_44321_M46946-78860",
+      "https://www.realtor.com/realestateandhomes-detail/4367-Ridge-Rd_Brooklyn_OH_44144_M30437-79631",
+      "https://www.realtor.com/realestateandhomes-detail/4386-Ridge-Rd_Cleveland_OH_44144_M42477-45477",
+      "https://www.realtor.com/realestateandhomes-detail/4373-Ridge-Rd_Cleveland_OH_44144_M43230-21274",
+      "https://www.realtor.com/realestateandhomes-detail/4400-Ridge-Rd_Cleveland_OH_44144_M40813-56192",
+      "https://www.realtor.com/realestateandhomes-detail/4339-Ridge-Rd_Brooklyn_OH_44144_M91105-29690",
+      "https://www.realtor.com/realestateandhomes-detail/4390-Ridge-Rd_Cleveland_OH_44144_M49722-28996",
+      "https://www.realtor.com/realestateandhomes-detail/4367-Brockley-Ave_Sheffield-Lake_OH_44054_M39277-02903",
+      "https://www.realtor.com/realestateandhomes-detail/4356-Rockland-Dr_Brooklyn_OH_44144_M42651-85938"
+    ],
+    "search_results": [
+      {
+        "title": "4325 Ridge Rd, Cleveland, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4325-Ridge-Rd_Brooklyn_OH_44144_M43207-85318",
+        "date": "1999-12-30",
+        "last_updated": "2025-10-14",
+        "snippet": "View detailed information about property 4325 Ridge Rd, Cleveland, OH 44144 including listing details, property photos, school and neighborhood data, ...",
+        "source": "web"
+      },
+      {
+        "title": "4367 Ridge Crest Dr, Copley, OH 44321",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4367-Ridge-Crest-Dr_Copley_OH_44321_M46946-78860",
+        "date": null,
+        "last_updated": null,
+        "snippet": "$618,283, 5, 4, 4,462, 25,674. Property history. Last sold in 2024. $460,000. 2024 taxes. $8,410. Since 2003. 2 sales. Built in 2003. 22 years old. Price ...",
+        "source": "web"
+      },
+      {
+        "title": "4367 Ridge Rd, Brooklyn, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4367-Ridge-Rd_Brooklyn_OH_44144_M30437-79631",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history \u00b7 Last sold in 2024. $245,000 \u00b7 2024 taxes. $4,932 \u00b7 Since 1976. 4 sales \u00b7 Built in 1958. 67 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "4386 Ridge Rd, Cleveland, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4386-Ridge-Rd_Cleveland_OH_44144_M42477-45477",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history \u00b7 Last sold in 2018. $75,000 \u00b7 2024 taxes. $2,785 \u00b7 Since 1974. 2 sales \u00b7 Built in 1952. 73 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "4373 Ridge Rd, Cleveland, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4373-Ridge-Rd_Cleveland_OH_44144_M43230-21274",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history \u00b7 Last sold in 1984. $45,000 \u00b7 2024 taxes. $2,996 \u00b7 Since 1984. 1 sale \u00b7 Built in 1948. 77 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "4400 Ridge Rd, Brooklyn, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4400-Ridge-Rd_Cleveland_OH_44144_M40813-56192",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history \u00b7 Last sold in 2019. $101,000 \u00b7 2024 taxes. $2,441 \u00b7 Since 1995. 2 sales \u00b7 Built in 1951. 74 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "4339 Ridge Rd, Brooklyn, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4339-Ridge-Rd_Brooklyn_OH_44144_M91105-29690",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Brooklyn property records. Home buying tips. Home buying checklist \u00b7 Home buyers ... 4367 Ridge Rd, Brooklyn, OH 44144, $245,000, 4, -, 1,980, 5,450. 4347 ...",
+        "source": "web"
+      },
+      {
+        "title": "4390 Ridge Rd, Brooklyn, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4390-Ridge-Rd_Cleveland_OH_44144_M49722-28996",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history ; Last sold in 2009. $65,000 ; 2024 taxes. $2,868 ; Since 2007. 2 sales ; Built in 1953. 72 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "4367 Brockley Ave, Sheffield Lake, OH 44054",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4367-Brockley-Ave_Sheffield-Lake_OH_44054_M39277-02903",
+        "date": null,
+        "last_updated": null,
+        "snippet": "4367 Brockley Ave, Sheffield Lake, OH 44054 ; Property type. Single Family ; Year built. 1958 ; Last sold. $135K in 2020 ; Price per sqft. $88 ; Garage. 1 Car.",
+        "source": "web"
+      },
+      {
+        "title": "4356 Rockland Dr, Brooklyn, OH 44144",
+        "url": "https://www.realtor.com/realestateandhomes-detail/4356-Rockland-Dr_Brooklyn_OH_44144_M42651-85938",
+        "date": null,
+        "last_updated": null,
+        "snippet": "View 34 photos for 4356 Rockland Dr, Brooklyn, OH 44144, a 3 bed, 1.5 bath, 975 Sq. Ft. single family home built in 1943 that was last sold on 02/02/2024.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"annual_taxes\": 4932}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T20:21:15.063558"
+}

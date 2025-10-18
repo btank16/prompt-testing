@@ -1,0 +1,201 @@
+{
+  "model": "sonar-pro",
+  "prompt": "I need you to review a map of the Slavic Village Neighborhood in Cleveland Ohio. I need to know what borders the neighborhood. Borders do not have to be directly lateral (east/west moving) or vertical (north/south moving). I want the borders labeled as highways, state routes, or major arterials. Please give me the borders in one array with their directionality in another array",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"border\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        },\n        \"border_direction\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"border\", \"border_direction\"]\n    }\n  }\n}",
+  "response": {
+    "id": "a23f95f2-b655-468a-bb61-9d0592756934",
+    "model": "sonar-pro",
+    "created": 1760306129,
+    "usage": {
+      "prompt_tokens": 129,
+      "completion_tokens": 119,
+      "total_tokens": 248,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.002,
+        "request_cost": 0.01,
+        "total_cost": 0.012
+      }
+    },
+    "citations": [
+      "https://en.wikipedia.org/wiki/Broadway%E2%80%93Slavic_Village",
+      "https://en.wikipedia.org/wiki/Ohio_State_Route_43",
+      "https://www.slavicvillage.org/wp-content/uploads/2023/10/EcoDistricts-Roadmap.pdf",
+      "https://en.wikipedia.org/wiki/Ohio_State_Route_87",
+      "https://mapcarta.com/22690148",
+      "https://www.slavicvillage.org/about/neighborhood-plan/",
+      "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+      "https://www.freshwatercleveland.com/features/FreewayImpact022516.aspx",
+      "https://levin.csuohio.edu/nodis/cleveland-maps",
+      "https://clevelandstater.com/news/arts-features/broadway-avenueslavic-village-rise-fall-and-rebirth",
+      "https://planning.clevelandohio.gov/maps/pdf/Slavic_Village_SII_Plan_05-08-07.pdf",
+      "https://teachingcleveland.org/highways-in-cleveland-from-the-encyclopedia-of-cleveland-history/",
+      "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+      "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+      "https://signalcleveland.org/cleveland-city-council-votes-new-ward-map-redistricting-plan-2025/"
+    ],
+    "search_results": [
+      {
+        "title": "Broadway\u2013Slavic Village",
+        "url": "https://en.wikipedia.org/wiki/Broadway%E2%80%93Slavic_Village",
+        "date": "2006-01-22",
+        "last_updated": "2025-09-15",
+        "snippet": "Broadway\u2013Slavic Village is a neighborhood on the Southeast side of Cleveland, Ohio. One of the city's oldest neighborhoods, it originated as the township of ...",
+        "source": "web"
+      },
+      {
+        "title": "Ohio State Route 43 - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ohio_State_Route_43",
+        "date": "2025-04-24",
+        "last_updated": "2025-04-24",
+        "snippet": "... Route 43 is no longer signed, although it has been in the past. The combined state routes run northwesterly through the Slavic Village neighborhood ...",
+        "source": "web"
+      },
+      {
+        "title": "ROADMAP",
+        "url": "https://www.slavicvillage.org/wp-content/uploads/2023/10/EcoDistricts-Roadmap.pdf",
+        "date": null,
+        "last_updated": "2025-10-12",
+        "snippet": "The Broadway-Slavic Village. District Team is seeking EcoDistrict certification for the geography described in the District Boundary. Map [see Figure 1]. The ...",
+        "source": "web"
+      },
+      {
+        "title": "Ohio State Route 87 - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ohio_State_Route_87",
+        "date": "2025-01-17",
+        "last_updated": "2025-03-20",
+        "snippet": "State Route 87 (SR 87) is an east\u2013west highway in northeastern Ohio, a US state. Its western terminus is at Public Square in downtown Cleveland.",
+        "source": "web"
+      },
+      {
+        "title": "Slavic Village Map - Quarter - City of Cleveland, Ohio, USA",
+        "url": "https://mapcarta.com/22690148",
+        "date": "2019-01-01",
+        "last_updated": "2025-07-24",
+        "snippet": "Broadway\u2013Slavic Village is a neighborhood on the Southeast side of Cleveland, Ohio. One of the city's oldest neighborhoods, it originated as the township of ...",
+        "source": "web"
+      },
+      {
+        "title": "Neighborhood Plan - Slavic Village Development",
+        "url": "https://www.slavicvillage.org/about/neighborhood-plan/",
+        "date": "2024-08-11",
+        "last_updated": "2025-07-17",
+        "snippet": "To help guide that future, Slavic Village Development and the City of Cleveland are teaming up to create the Slavic Village Neighborhood Plan from 2025-2026.",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Neighborhoods Map - Lake Erie",
+        "url": "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+        "date": null,
+        "last_updated": "2025-09-06",
+        "snippet": "SLAVIC VILLAGE. UNION\u2013MILES. Mount. PLEASANT. LEE\u2013. HARVARD. LEE\u2013 seville. OLD BROOKLYN. BROOKLYN. CENTRE. MIDTOWN. Downtown. Tremont. Shaker. Square. Ohio.",
+        "source": "web"
+      },
+      {
+        "title": "New images reveal true impact of freeways on Cleveland's ...",
+        "url": "https://www.freshwatercleveland.com/features/FreewayImpact022516.aspx",
+        "date": "2016-02-25",
+        "last_updated": "2025-05-14",
+        "snippet": "New images reveal true impact of freeways on Cleveland's neighborhoods \u00b7 Gateway District (Downtown) \u00b7 Campus District (Downtown) \u00b7 Slavic Village/ ...",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Maps",
+        "url": "https://levin.csuohio.edu/nodis/cleveland-maps",
+        "date": "2024-10-16",
+        "last_updated": "2025-09-19",
+        "snippet": "Interactive Map: Cleveland SPAs (aka Neighborhoods) and Wards. Interactive Map. Zoom in and out and turn on SPA and Ward layers to see map details.",
+        "source": "web"
+      },
+      {
+        "title": "Broadway Avenue/Slavic Village: The Rise, Fall and Rebirth",
+        "url": "https://clevelandstater.com/news/arts-features/broadway-avenueslavic-village-rise-fall-and-rebirth",
+        "date": "2020-05-01",
+        "last_updated": "2024-10-16",
+        "snippet": "If you travel down Broadway Avenue through Slavic Village nowadays, it's hard to imagine what came before the ruins of one of Ohio's most historic paths through ...",
+        "source": "web"
+      },
+      {
+        "title": "slavic village - broadway development action plan",
+        "url": "https://planning.clevelandohio.gov/maps/pdf/Slavic_Village_SII_Plan_05-08-07.pdf",
+        "date": null,
+        "last_updated": "2024-02-03",
+        "snippet": "In property between the two districts the Boys and Girls Club of Greater Cleveland took advantage of an underutilized block to construct a facility as well.",
+        "source": "web"
+      },
+      {
+        "title": "Highways in Cleveland from the Encyclopedia of Cleveland History",
+        "url": "https://teachingcleveland.org/highways-in-cleveland-from-the-encyclopedia-of-cleveland-history/",
+        "date": "2011-12-19",
+        "last_updated": "2025-01-18",
+        "snippet": "Asia Town from Fresh Water Cleveland, Beachwood, Bedford and Bedford Heights, Broadway/Slavic Village, Buckeye Neighborhood, Campus District ...",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland, OH (Broadway-Slavic Village)",
+        "url": "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+        "date": "2025-04-04",
+        "last_updated": "2025-10-11",
+        "snippet": "Broadway-Slavic Village median real estate price is $86,641, which is less expensive than 93.1% of Ohio neighborhoods and 96.9% of all U.S. neighborhoods.",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] ROADMAP - Just Communities",
+        "url": "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+        "date": null,
+        "last_updated": "2025-10-11",
+        "snippet": "Once adopted, the Broadway-Slavic. Village EcoDistricts Roadmap will be presented to the City of Cleveland City Planning. Commission for review, approval, and ...",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland City Council passes new ward map",
+        "url": "https://signalcleveland.org/cleveland-city-council-votes-new-ward-map-redistricting-plan-2025/",
+        "date": "2025-01-06",
+        "last_updated": "2025-01-16",
+        "snippet": "The Hyacinth neighborhood in Slavic Village is no longer split between two wards, and the Baltic Road area on the West Side is less divided than ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\n\"border\" : [ \"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\", \"k\", \"l\", \"m\", \"n\", \"o\", \"p\", \"q\", \"r\", \"s\", \"t\", \"u\", \"v\", \"w\", \"x\", \"y\", \"z\" ],\n\"border_direction\" : [\"left\", \"right\", \"up\", \"down\", \"up_left\", \"up_right\", \"down_left\", \"down_right\"]\n}\n"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-12T17:56:16.450183"
+}

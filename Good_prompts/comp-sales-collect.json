@@ -1,0 +1,156 @@
+{
+  "model": "sonar-pro",
+  "prompt": "I am looking to purchase a multifamily home at 6603 Gertrude Ave, Cleveland, OH 44105. I need you to find a comparable multifamily properties that have sold recently in South Broadway, Cleveland, Ohio. Please note the difference between properties for sale and properties that have sold. Provide the address of all the properties that you can find in an array.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "zillow.com",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"addresses\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"addresses\"]\n    }\n  }\n}",
+  "response": {
+    "id": "3079e74f-73fc-4bef-a70d-a749e203eef6",
+    "model": "sonar-pro",
+    "created": 1760402612,
+    "usage": {
+      "prompt_tokens": 126,
+      "completion_tokens": 119,
+      "total_tokens": 245,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.002,
+        "request_cost": 0.006,
+        "total_cost": 0.008
+      }
+    },
+    "citations": [
+      "https://www.zillow.com/west-boulevard-cleveland-oh/sold/",
+      "https://www.zillow.com/cleveland-oh-44128/sold/",
+      "https://www.zillow.com/cleveland-oh-44135/sold/",
+      "https://www.zillow.com/ohio-city-cleveland-oh/sold/",
+      "https://www.zillow.com/cleveland-oh-44105/sold/",
+      "https://www.zillow.com/cleveland-oh/two-family-units_att/3_p/",
+      "https://www.zillow.com/cleveland-oh/sold/",
+      "https://www.zillow.com/cleveland-oh-44114/sold/",
+      "https://www.zillow.com/cleveland-oh-44102/sold/",
+      "https://www.zillow.com/cleveland-oh-44113/duplex/"
+    ],
+    "search_results": [
+      {
+        "title": "West Boulevard Cleveland Recently Sold Homes",
+        "url": "https://www.zillow.com/west-boulevard-cleveland-oh/sold/",
+        "date": "2025-03-19",
+        "last_updated": "2025-03-19",
+        "snippet": "Browse data on the 883 recent real estate transactions in West Boulevard Cleveland. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in 44128 - 1450 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh-44128/sold/",
+        "date": "2025-04-11",
+        "last_updated": "2025-04-11",
+        "snippet": "Browse data on the 1450 recent real estate transactions in 44128. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in 44135 - 1409 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh-44135/sold/",
+        "date": "2025-04-17",
+        "last_updated": "2025-04-17",
+        "snippet": "Browse data on the 1409 recent real estate transactions in 44135. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in Ohio City Cleveland",
+        "url": "https://www.zillow.com/ohio-city-cleveland-oh/sold/",
+        "date": "2025-04-06",
+        "last_updated": "2025-04-06",
+        "snippet": "Browse data on the 524 recent real estate transactions in Ohio City Cleveland. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in 44105 - 2500 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh-44105/sold/",
+        "date": "2025-04-08",
+        "last_updated": "2025-04-08",
+        "snippet": "Browse data on the 2500 recent real estate transactions in 44105. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Two Family Units - Cleveland OH Real Estate",
+        "url": "https://www.zillow.com/cleveland-oh/two-family-units_att/3_p/",
+        "date": "2025-03-30",
+        "last_updated": "2025-03-30",
+        "snippet": "Zillow has 504 homes for sale in Cleveland OH matching Two Family Units ... South Broadway Homes for Sale$76,855; Central Homes for Sale$127,309; Downtown ...",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in Cleveland OH - 19138 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh/sold/",
+        "date": "2025-10-07",
+        "last_updated": "2025-10-07",
+        "snippet": "Browse data on the 19138 recent real estate transactions in Cleveland OH. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in 44114 - 88 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh-44114/sold/",
+        "date": "2025-03-18",
+        "last_updated": "2025-03-18",
+        "snippet": "Browse data on the 88 recent real estate transactions in 44114. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "Recently Sold Homes in 44102 - 2425 Transactions",
+        "url": "https://www.zillow.com/cleveland-oh-44102/sold/",
+        "date": "2025-04-08",
+        "last_updated": "2025-04-08",
+        "snippet": "Browse data on the 2425 recent real estate transactions in 44102. Great for discovering comps, sales history, photos, and more.",
+        "source": "web"
+      },
+      {
+        "title": "44113 Duplex & Triplex Homes For Sale - 16 Homes",
+        "url": "https://www.zillow.com/cleveland-oh-44113/duplex/",
+        "date": "2025-03-02",
+        "last_updated": "2025-03-02",
+        "snippet": "Search duplex and triplex homes for sale in 44113. Find multi-family housing and more on Zillow.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"addresses\":[\"11706 Robertson Ave, Cleveland, OH 44105\",\"7418 Clement Ave, Cleveland, OH 44105\",\"11718 Gay Ave, Cleveland, OH 44105\",\"3624 E 118th St, Cleveland, OH 44105\",\"11105 Revere Ave, Cleveland, OH 44105\",\"7515 Ottawa Rd, Cleveland, OH 44105\",\"7432 Ottawa Rd, Cleveland, OH 44105\",\"12822 Ferris Ave, Cleveland, OH 44105\",\"3609 E 65th St, Cleveland, OH 44105\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T20:44:02.707510"
+}

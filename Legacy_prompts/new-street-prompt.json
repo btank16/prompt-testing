@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "A Highway is road designed for high-speed, controlled-access treavel\nA State Route is a road numbered at the state level\nArterials are high-capacity roads that move traffic within a city or region\n\nI need a list of Highways, State Routes, and Arterials that border Broadway-Slavic Village, Cleveland, Ohio. For the border streets look in each direction (north, south, east, west). Then I need a list of State Routes and Arterials that go through the middle of the neighborhood. For internal streets please include both north-south and east-west moving streets. Limit your outputs to just a list of street names",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"border_streets\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        },\n        \"internal_streets\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"border_streets\", \"internal_streets\"]\n    }\n  }\n}",
+  "response": {
+    "id": "10a8b005-8914-404f-9c79-014ee024c3ad",
+    "model": "sonar",
+    "created": 1760293750,
+    "usage": {
+      "prompt_tokens": 183,
+      "completion_tokens": 186,
+      "total_tokens": 369,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.008,
+        "total_cost": 0.008
+      }
+    },
+    "citations": [
+      "https://en.wikipedia.org/wiki/Broadway%E2%80%93Slavic_Village",
+      "http://www.everystreetcleveland.com/2025/05/slavic-village.html",
+      "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+      "https://myclevelandhistory.com/2025/06/growing-up-in-the-heart-of-clevelands-polish-southeast-side/",
+      "https://mapcarta.com/22690148",
+      "https://planning.clevelandohio.gov/maps/pdf/Slavic_Village_SII_Plan_05-08-07.pdf",
+      "https://www.slavicvillage.org/about/ecodistrict/",
+      "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+      "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+      "https://levin.csuohio.edu/nodis/cleveland-maps"
+    ],
+    "search_results": [
+      {
+        "title": "Broadway\u2013Slavic Village - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Broadway%E2%80%93Slavic_Village",
+        "date": "2006-01-22",
+        "last_updated": "2025-09-15",
+        "snippet": "Broadway is bordered to the west and northwest by Cuyahoga Valley, to the north by the Central neighborhood, to the east by the neighborhoods of Union\u2013Miles ...",
+        "source": "web"
+      },
+      {
+        "title": "Slavic Village - Every Street Cleveland",
+        "url": "http://www.everystreetcleveland.com/2025/05/slavic-village.html",
+        "date": "2025-05-08",
+        "last_updated": "2025-10-10",
+        "snippet": "The Broadway Ave Historic District - also once known as the Slavic Downtown - roughly mirrors the old historic commercial and cultural district ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] ROADMAP - Just Communities",
+        "url": "https://justcommunities.info/wp-content/uploads/2024/04/Slavic-Village-Roadmap_Final.2.2-1.pdf",
+        "date": null,
+        "last_updated": "2025-10-11",
+        "snippet": "BOUNDARY. Broadway-Slavic Village, one of Cleveland's oldest and most well-known neighborhoods, is a five square mile urban community located two miles ...",
+        "source": "web"
+      },
+      {
+        "title": "Growing Up in the Heart of Cleveland's Polish Southeast Side",
+        "url": "https://myclevelandhistory.com/2025/06/growing-up-in-the-heart-of-clevelands-polish-southeast-side/",
+        "date": "2025-06-10",
+        "last_updated": "2025-09-29",
+        "snippet": "Growing up in Slavic Village meant tight-knit neighborhoods, many taverns, bakeries, and meat markets, where neighbors spoke Polish and ...",
+        "source": "web"
+      },
+      {
+        "title": "Slavic Village Map - Quarter - City of Cleveland, Ohio, USA - Mapcarta",
+        "url": "https://mapcarta.com/22690148",
+        "date": "2019-01-01",
+        "last_updated": "2025-07-24",
+        "snippet": "Broadway\u2013Slavic Village is a neighborhood on the Southeast side of Cleveland, Ohio. One of the city's oldest neighborhoods, it originated as the township of ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] slavic village - broadway development action plan",
+        "url": "https://planning.clevelandohio.gov/maps/pdf/Slavic_Village_SII_Plan_05-08-07.pdf",
+        "date": null,
+        "last_updated": "2024-02-03",
+        "snippet": "In the final chapter of this report a detailed work plan has been designed to guide Slavic Village Development, neighborhood residents and businesses developers ...",
+        "source": "web"
+      },
+      {
+        "title": "EcoDistrict - Slavic Village Development",
+        "url": "https://www.slavicvillage.org/about/ecodistrict/",
+        "date": null,
+        "last_updated": "2025-08-10",
+        "snippet": "At five square miles, Broadway Slavic Village is by far the largest EcoDistrict, with the next largest at just over three-fourths of a square mile. Read on for ...",
+        "source": "web"
+      },
+      {
+        "title": "Broadway-Slavic Village Cleveland, OH 44105, Neighborhood Profile",
+        "url": "https://www.neighborhoodscout.com/oh/cleveland/broadway-slavic-village",
+        "date": "2025-04-04",
+        "last_updated": "2025-10-11",
+        "snippet": "Broadway-Slavic Village median real estate price is $86,641, which is less expensive than 93.1% of Ohio neighborhoods and 96.9% of all U.S. neighborhoods.",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] Cleveland Neighborhoods Map - Lake Erie",
+        "url": "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/cleveland-neighborhoods-map-161117.pdf",
+        "date": null,
+        "last_updated": "2025-09-06",
+        "snippet": "BROADWAY\u2013. SLAVIC VILLAGE. UNION\u2013MILES. Mount. PLEASANT. LEE\u2013. HARVARD. LEE\u2013 seville. OLD BROOKLYN. BROOKLYN. CENTRE. MIDTOWN. Downtown. Tremont. Shaker. Square.",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Maps - Levin College of Public Affairs and Education",
+        "url": "https://levin.csuohio.edu/nodis/cleveland-maps",
+        "date": "2024-10-16",
+        "last_updated": "2025-09-19",
+        "snippet": "Maps are based on 2012 neighborhood boundaries and 2010 census tract geographic files. For additional information contact NODIS. Bellaire-Puritas \u00b7 Broadway- ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"border_streets\":[\"Broadway Avenue (north-south, eastern border)\",\"Harvard Avenue (north border)\",\"Fleet Avenue (north border)\",\"Broadway Avenue (west border near Cuyahoga Valley)\",\"Kinsman Road (east border)\",\"Union Avenue (east border)\",\"Newburgh Heights boundary streets (southwest border)\",\"Garfield Heights boundary streets (south border)\"],\"internal_streets\":[\"Broadway Avenue (north-south arterial through neighborhood)\",\"Fleet Avenue (east-west arterial through neighborhood)\",\"Harvard Avenue (north-south arterial through neighborhood)\",\"Lansing Avenue (east-west internal street)\",\"East 66th Street (north-south internal street)\",\"East 55th Street (north-south internal street)\",\"East 49th Street (north-south internal street)\",\"East 56th Street (north-south internal street)\",\"East 65th Street (north-south internal street)\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-12T14:29:43.351705"
+}

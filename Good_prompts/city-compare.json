@@ -1,0 +1,147 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to review the socioeconomic and demographic data of Cuyahoga County ohio. Please also review each individual city of Cuyahoga County as well. Please tell me the two cities that are similar in socioeconomic status and demographics as Garfield Heights Ohio.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"similar_neighborhoods\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"similar_neighborhoods\"]\n    }\n  }\n}",
+  "response": {
+    "id": "976f82fa-cecd-4a15-bb46-ade24bb3b2ef",
+    "model": "sonar",
+    "created": 1760484949,
+    "usage": {
+      "prompt_tokens": 102,
+      "completion_tokens": 13,
+      "total_tokens": 115,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://worldpopulationreview.com/us-counties/ohio/cuyahoga-county",
+      "https://www.healthyneo.org/demographicdata?id=2112",
+      "https://datausa.io/profile/geo/cuyahoga-county-oh",
+      "https://www.countyplanning.us/news/demographics/2025-data-book-now-available/",
+      "https://datacommons.org/place/geoId/39035",
+      "https://www.ohio-demographics.com/cuyahoga-county-demographics",
+      "https://www.countyplanning.us/resources/data-books/our-communities/",
+      "https://www.communitysolutions.com/fact-sheets",
+      "https://fred.stlouisfed.org/series/OHCUYA5POP"
+    ],
+    "search_results": [
+      {
+        "title": "Cuyahoga County, Ohio Population 2025",
+        "url": "https://worldpopulationreview.com/us-counties/ohio/cuyahoga-county",
+        "date": "2025-01-01",
+        "last_updated": "2025-10-10",
+        "snippet": "Cuyahoga County's average per capita income is $48,946. Household income levels show a median of $62,823. The poverty rate stands at 16.2%. Families: A family ...",
+        "source": "web"
+      },
+      {
+        "title": "Demographics :: County :: Cuyahoga - Healthy Northeast Ohio",
+        "url": "https://www.healthyneo.org/demographicdata?id=2112",
+        "date": "2025-01-01",
+        "last_updated": "2025-09-25",
+        "snippet": "Cuyahoga County has a population of 1,225,089, with 56.93% White, 29.09% Black/African American, 7.62% Hispanic/Latino, and 92.38% Non-Hispanic/Latino.",
+        "source": "web"
+      },
+      {
+        "title": "Cuyahoga County, OH - Data USA",
+        "url": "https://datausa.io/profile/geo/cuyahoga-county-oh",
+        "date": "2020-06-25",
+        "last_updated": "2025-10-03",
+        "snippet": "In 2023, Cuyahoga County, OH had a population of 1.25M people with a median age of 40.5 and a median household income of $62,823. Between 2022 and 2023 the ...",
+        "source": "web"
+      },
+      {
+        "title": "2025 Data Book Now Available",
+        "url": "https://www.countyplanning.us/news/demographics/2025-data-book-now-available/",
+        "date": "2025-05-19",
+        "last_updated": "2025-09-02",
+        "snippet": "The 2025 Data Book provides data for Cuyahoga County, covering 62 indicators in six categories, including demographics, economy, housing, land ...",
+        "source": "web"
+      },
+      {
+        "title": "Cuyahoga County - Data Commons",
+        "url": "https://datacommons.org/place/geoId/39035",
+        "date": "2023-01-01",
+        "last_updated": "2025-02-24",
+        "snippet": "The median income in Cuyahoga County was $37,386 in 2023. The unemployment rate in Cuyahoga County was 4% in 2025.",
+        "source": "web"
+      },
+      {
+        "title": "Cuyahoga County Demographics | Current Ohio Census Data",
+        "url": "https://www.ohio-demographics.com/cuyahoga-county-demographics",
+        "date": "2025-01-01",
+        "last_updated": "2025-10-14",
+        "snippet": "The 2025 projected population for Cuyahoga County is 1,242,512. This projection assumes an annual rate of change of 0.2%, consistent with the population change ...",
+        "source": "web"
+      },
+      {
+        "title": "Our Communities - Cuyahoga County Planning Commission",
+        "url": "https://www.countyplanning.us/resources/data-books/our-communities/",
+        "date": "2025-07-02",
+        "last_updated": "2025-09-25",
+        "snippet": "The 2025 edition of the Data Book includes nine new indicators, with at least one indicator added to each section, except for the housing section. Three ...",
+        "source": "web"
+      },
+      {
+        "title": "Fact Sheets - The Center for Community Solutions",
+        "url": "https://www.communitysolutions.com/fact-sheets",
+        "date": "2024-01-01",
+        "last_updated": "2025-10-11",
+        "snippet": "Data released 2025. Cuyahoga County Council Districts. Cuyahoga Council District fact sheets highlight demographic, health, and social indicators in the City of ...",
+        "source": "web"
+      },
+      {
+        "title": "Resident Population in Cuyahoga County, OH (OHCUYA5POP)",
+        "url": "https://fred.stlouisfed.org/series/OHCUYA5POP",
+        "date": "2025-03-14",
+        "last_updated": "2025-09-08",
+        "snippet": "The resident population of Cuyahoga County, OH was 1,240.594 thousand in 2024, as of July 1, estimated by the U.S. Census Bureau.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"similar_neighborhoods\":[\"Maple Heights\",\"Bedford\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-14T19:36:15.943101"
+}

@@ -1,0 +1,183 @@
+{
+  "model": "sonar",
+  "prompt": "Please find me the property tax evaluation from 2024 to pay in 2025 for the property at 17615 W Cedarwood Ln, Goodyear, AZ 85338",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"answer\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\"answer\"]\n    }\n  }\n}",
+  "response": {
+    "id": "ccd7692d-45fc-4d3b-9a8c-bef98f162b39",
+    "model": "sonar",
+    "created": 1760061958,
+    "usage": {
+      "prompt_tokens": 86,
+      "completion_tokens": 6,
+      "total_tokens": 92,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.compass.com/homedetails/17615-W-Cedarwood-Ln-Goodyear-AZ-85338/ZTMJ1_pid/",
+      "https://www.coldwellbankerhomes.com/az/goodyear/17615-w-cedarwood/pid_67656795/",
+      "https://www.fultongrace.com/home-details/8497216/17615-w-cedarwood-lane-goodyear-85338-az/",
+      "https://www.stessa.com/investment-properties/17615-w-cedarwood-ln-goodyear-az-85338/details/2VKvyj7E6bfv",
+      "https://nickbastian.com/idx/17615-W-CEDARWOOD-Lane-Goodyear-AZ-85338-mls_6925407/",
+      "https://www.stayinggreenrealty.com/property/17615-w-cedarwood-lane-goodyear-az-85338/",
+      "https://www.zillow.com/homedetails/17615-W-Cedarwood-Ln-Goodyear-AZ-85338/95169915_zpid/",
+      "https://www.55places.com/property/17615-w-cedarwood-ln-goodyear-az-85338-ffpid_15437015",
+      "https://www.homes.com/property/17615-w-cedarwood-ln-goodyear-az/vmmbznj4g0znv/",
+      "https://www.maricopa.gov/915/Property-Tax-Bill",
+      "https://www.trulia.com/home/17615-w-cedarwood-ln-goodyear-az-85338-95169915",
+      "https://www.realtor.com/realestateandhomes-detail/17615-W-Cedarwood-Ln_Goodyear_AZ_85338_M29723-45594",
+      "https://www.remax.com/az/goodyear/home-details/17615-w-cedarwood-ln-goodyear-az-85338/17480954372254604358/M00000048/6925407"
+    ],
+    "search_results": [
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 - Compass Real Estate",
+        "url": "https://www.compass.com/homedetails/17615-W-Cedarwood-Ln-Goodyear-AZ-85338/ZTMJ1_pid/",
+        "date": "2025-05-10",
+        "last_updated": "2025-10-10",
+        "snippet": "LISTING UPDATED: 09/26/2025 06:44 PM. Property Details for 17615 West Cedarwood Lane ... Property Taxes. $209. HOA Dues. $319. Term. 30 Years ... 17615 W CEDARWOOD ...",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood, Goodyear, AZ 85338 - MLS 6925407",
+        "url": "https://www.coldwellbankerhomes.com/az/goodyear/17615-w-cedarwood/pid_67656795/",
+        "date": "2025-09-26",
+        "last_updated": null,
+        "snippet": "Tax History for 17615 W Cedarwood. Year. Property Taxes. Change. Tax Assessment. Change. 2024. $2,508. 1%. $32,200. -3%. 2023. $2,472. 8%.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Lane, Goodyear, AZ, 85338 | 6925407",
+        "url": "https://www.fultongrace.com/home-details/8497216/17615-w-cedarwood-lane-goodyear-85338-az/",
+        "date": "2025-09-25",
+        "last_updated": null,
+        "snippet": "Overview for 17615 W Cedarwood Lane, Goodyear, AZ \u00b7 mls Listing Office. Realty ONE Group 623-552-3773 \u00b7 HOA Fees. $240 (Monthly) \u00b7 Taxes. $2,508.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 for sale - Stessa",
+        "url": "https://www.stessa.com/investment-properties/17615-w-cedarwood-ln-goodyear-az-85338/details/2VKvyj7E6bfv",
+        "date": "2025-09-27",
+        "last_updated": null,
+        "snippet": "Review property information and evaluate investment financials of 17615 W Cedarwood Ln, Goodyear, AZ 85338 on stessa.com.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W CEDARWOOD Lane, Goodyear, AZ 85338 - Tempe Real ...",
+        "url": "https://nickbastian.com/idx/17615-W-CEDARWOOD-Lane-Goodyear-AZ-85338-mls_6925407/",
+        "date": "2020-07-28",
+        "last_updated": "2025-10-10",
+        "snippet": "Property Description Custom lead glass entry sets the tone for this stunning duet home in CantaMia. The thoughtful beauty of this home shows at every turn.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W CEDARWOOD Lane, Goodyear, AZ 85338",
+        "url": "https://www.stayinggreenrealty.com/property/17615-w-cedarwood-lane-goodyear-az-85338/",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Details. Updated on October 5, 2025 at 6:25 pm. Property ID: HZ6925407 ... Property Tax $250.00; Home Insurance $83.33; PMI $1,000.00. Total Amount. $. Down ...",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 | MLS #6925407",
+        "url": "https://www.zillow.com/homedetails/17615-W-Cedarwood-Ln-Goodyear-AZ-85338/95169915_zpid/",
+        "date": "2025-09-27",
+        "last_updated": "2025-09-27",
+        "snippet": "Zillow has 31 photos of this $364900 2 beds, 2 baths, 1374 sqft multi family home located at 17615 W Cedarwood Ln, Goodyear, AZ 85338 built in 2013.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, Az 85338 | Cantamia At Estrella",
+        "url": "https://www.55places.com/property/17615-w-cedarwood-ln-goodyear-az-85338-ffpid_15437015",
+        "date": "2025-08-22",
+        "last_updated": "2025-10-02",
+        "snippet": "Taxes. Annual amount: $2,508.00; Tax year: 2024. Senior Community. No. Features. Golf, Pickleball, Lake, Gated, Community Spa, Community Spa Htd, Community ...",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 | Homes.com",
+        "url": "https://www.homes.com/property/17615-w-cedarwood-ln-goodyear-az/vmmbznj4g0znv/",
+        "date": "2025-09-26",
+        "last_updated": "2025-10-10",
+        "snippet": "This home is located at 17615 W Cedarwood Ln, Goodyear, AZ 85338 and is currently priced at $364,900, approximately $265 per square foot. This property was ...",
+        "source": "web"
+      },
+      {
+        "title": "Property Tax Bill | Maricopa County, AZ",
+        "url": "https://www.maricopa.gov/915/Property-Tax-Bill",
+        "date": "2022-01-01",
+        "last_updated": "2025-09-19",
+        "snippet": "Get information regarding how your Maricopa County property tax bill works.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 | MLS# 6925407 ...",
+        "url": "https://www.trulia.com/home/17615-w-cedarwood-ln-goodyear-az-85338-95169915",
+        "date": "2025-09-26",
+        "last_updated": "2025-09-28",
+        "snippet": "17615 W Cedarwood Ln, Goodyear, AZ 85338 is a 1374 sqft, 2 bed, 2 bath Multi-Family Home listed for $364900. Custom lead glass entry sets the tone for this ...",
+        "source": "web"
+      },
+      {
+        "title": "17615 W Cedarwood Ln, Goodyear, AZ 85338 [Updated 9/26]",
+        "url": "https://www.realtor.com/realestateandhomes-detail/17615-W-Cedarwood-Ln_Goodyear_AZ_85338_M29723-45594",
+        "date": null,
+        "last_updated": null,
+        "snippet": "17615 W Cedarwood Ln, Goodyear, AZ 85338 is for sale. View 30 photos of this 2 bed, 2 bath, 1374 sqft. townhome with a list price of $364900.",
+        "source": "web"
+      },
+      {
+        "title": "17615 W CEDARWOOD LN, GOODYEAR, AZ 85338 - RE/MAX",
+        "url": "https://www.remax.com/az/goodyear/home-details/17615-w-cedarwood-ln-goodyear-az-85338/17480954372254604358/M00000048/6925407",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Take a closer look at this $364900, 2 bed, 2 bath, 1374 Sq Ft, Duplex for sale, located at 17615 W CEDARWOOD LN in GOODYEAR, AZ 85338.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\":2508}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-09T22:06:15.141056"
+}

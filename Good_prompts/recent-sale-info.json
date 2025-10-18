@@ -1,0 +1,156 @@
+{
+  "model": "sonar",
+  "prompt": "I need you to look into price and sale history for the property at: 3609 E 65th St, Cleveland, OH 44105. Please provide me with the date the property sold (mm-dd-yyyy) and the sale price. If the property is currently for sale, reply with \"for sale\" as the sale date.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "realtor.com, redfin.com",
+    "recency_filter": "none",
+    "context_size": "low",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"sale_date\": {\n          \"type\": \"string\"\n        },\n        \"sale_price\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\"sale_date\", \"sale_price\"]\n    }\n  }\n}",
+  "response": {
+    "id": "aaaf2907-e3c1-493d-a473-e853892fdc4f",
+    "model": "sonar",
+    "created": 1760404192,
+    "usage": {
+      "prompt_tokens": 119,
+      "completion_tokens": 17,
+      "total_tokens": 136,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.0,
+        "request_cost": 0.005,
+        "total_cost": 0.005
+      }
+    },
+    "citations": [
+      "https://www.redfin.com/OH/Cleveland/3609-E-65th-St-44105/home/70786522",
+      "https://www.realtor.com/realestateandhomes-detail/3640-E-65th-St_Cleveland_OH_44105_M39737-79566",
+      "https://www.realtor.com/propertyrecord-search/cleveland_oh/E-65th-St",
+      "https://www.realtor.com/realestateandhomes-detail/3636-E-65th-St_Cleveland_OH_44105_M94122-82321",
+      "https://www.realtor.com/realestateandhomes-detail/3605-E-65th-St_Cleveland_OH_44105_M47710-03575",
+      "https://www.realtor.com/realestateandhomes-detail/3603-E-65th-St_Cleveland_OH_44105_M44176-71877",
+      "https://www.realtor.com/realestateandhomes-detail/3609-E-57th-St_Cleveland_OH_44105_M46441-64829",
+      "https://www.realtor.com/realestateandhomes-detail/3609-E-75th-St_Cleveland_OH_44105_M47400-12833",
+      "https://www.realtor.com/realestateandhomes-detail/3609-E-65th-St_Cleveland_OH_44105_M38380-92863",
+      "https://www.realtor.com/propertyrecord-search/44104/E-65th-St"
+    ],
+    "search_results": [
+      {
+        "title": "3609 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.redfin.com/OH/Cleveland/3609-E-65th-St-44105/home/70786522",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Sold: 2 beds, 1.5 baths, 1460 sq. ft. townhouse located at 3609 E 65th St, Cleveland, OH 44105 sold for $134900 on Mar 18, 2025. MLS# 5103263.",
+        "source": "web"
+      },
+      {
+        "title": "3640 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3640-E-65th-St_Cleveland_OH_44105_M39737-79566",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Photo of property at 3609 E 65th St, Cleveland, OH 44105. Property detail for 3609 E 65th St Cleveland, OH 44105. Sold on March 18, 2025. $134,900. 2bed; 1.5 ...",
+        "source": "web"
+      },
+      {
+        "title": "Home property records near E 65th St, Cleveland OH",
+        "url": "https://www.realtor.com/propertyrecord-search/cleveland_oh/E-65th-St",
+        "date": null,
+        "last_updated": null,
+        "snippet": "1489 E 65th St, Cleveland, 44103, OH. For sale. $429,900. 3399 E 65th St, Cleveland, 44127, OH. For sale. $129,900. 3609 E 65th St, Cleveland, 44105, OH.",
+        "source": "web"
+      },
+      {
+        "title": "3636 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3636-E-65th-St_Cleveland_OH_44105_M94122-82321",
+        "date": null,
+        "last_updated": null,
+        "snippet": "View 23 photos for 3636 E 65th St, Cleveland, OH 44105, a 4 bed, 2 bath, 2184 Sq. Ft. multi family home built in 1910 that was last sold on 12/07/2022.",
+        "source": "web"
+      },
+      {
+        "title": "3605 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3605-E-65th-St_Cleveland_OH_44105_M47710-03575",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history \u00b7 Last sold in 2015. $55,000 \u00b7 2024 taxes. $3,695 \u00b7 Since 2001. 2 sales \u00b7 Built in 2002. 23 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "3603 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3603-E-65th-St_Cleveland_OH_44105_M44176-71877",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history ; Last sold in 2024. $129,500 ; 2024 taxes. $3,236 ; Since 1994. 4 sales ; Built in 2002. 23 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "3609 E 57th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3609-E-57th-St_Cleveland_OH_44105_M46441-64829",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history ; Last sold in 2009. $1,900 ; 2016 taxes. $44 ; Since 2005. 2 sales ; Built in 1910. 115 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "3609 E 75th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3609-E-75th-St_Cleveland_OH_44105_M47400-12833",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Property history ; Last sold in 2009. $10,000 ; 2024 taxes. $439 ; Since 1983. 3 sales ; Built in 1900. 125 years old ...",
+        "source": "web"
+      },
+      {
+        "title": "3609 E 65th St, Cleveland, OH 44105",
+        "url": "https://www.realtor.com/realestateandhomes-detail/3609-E-65th-St_Cleveland_OH_44105_M38380-92863",
+        "date": null,
+        "last_updated": "2025-03-02",
+        "snippet": "Property history. Last sold in 2025. $134,900. 2024 taxes. $2,760. Since 1992. 5 ... Popular searches in Cleveland include: Cleveland, OH homes for sale with ...",
+        "source": "web"
+      },
+      {
+        "title": "Home property records near E 65th St, Cleveland OH",
+        "url": "https://www.realtor.com/propertyrecord-search/44104/E-65th-St",
+        "date": null,
+        "last_updated": "2025-02-28",
+        "snippet": "1597 E 65th St, Cleveland, 44103, OH. Recently sold. $36,500. 3609 E 65th St, Cleveland, 44105, OH. Recently sold. $134,900. 3710 E 65th St, Cleveland, 44105, ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"sale_date\":\"03-18-2025\",\"sale_price\":134900}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-13T22:52:47.922747"
+}

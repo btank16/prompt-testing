@@ -1,0 +1,156 @@
+{
+  "model": "sonar-pro",
+  "prompt": "Review the major streets and highways of the ohio city neighborhood in Cleveland Ohio. Based on your findings please break the neighborhood into districts based on division (e.g., north of X street, west of Y street, etc.) by majors streets and highways. Please try to keep the districts from overlapping. Only output district names in your output, not descriptions.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "url": "",
+  "search_params": {
+    "domain_filter": "",
+    "recency_filter": "none",
+    "context_size": "medium",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "expected_json": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"regions\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"regions\"]\n    }\n  }\n}",
+  "response": {
+    "id": "3b09cc51-0ba7-4789-9948-0fc5df9a214c",
+    "model": "sonar-pro",
+    "created": 1760307793,
+    "usage": {
+      "prompt_tokens": 118,
+      "completion_tokens": 59,
+      "total_tokens": 177,
+      "search_context_size": "medium",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.001,
+        "request_cost": 0.01,
+        "total_cost": 0.011
+      }
+    },
+    "citations": [
+      "https://gisgeography.com/cleveland-map-ohio/",
+      "https://streetlookup.com/cleveland-map/",
+      "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/downtown-cleveland-map-180424.pdf",
+      "https://www.istockphoto.com/photos/cleveland-ohio-map",
+      "https://www.csuohio.edu/sites/default/files/Map%20of%20the%20City%20of%20Cleveland.pdf",
+      "https://en.wikipedia.org/wiki/Ohio_City,_Cleveland",
+      "https://www.riderta.com/maps",
+      "https://stock.adobe.com/search?k=cleveland+map",
+      "https://www.thisiscleveland.com/planning-tools/visitor-resources/maps",
+      "https://www.ohiocity.org/neighborhood-guide/"
+    ],
+    "search_results": [
+      {
+        "title": "Cleveland Ohio Map - GIS Geography",
+        "url": "https://gisgeography.com/cleveland-map-ohio/",
+        "date": "2024-03-10",
+        "last_updated": "2025-10-12",
+        "snippet": "This map is perfect for you. It displays everything from interstates (like I-71, I-77, and I-90) highways, and major roads.",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Map - Street Lookup and Driving Directions",
+        "url": "https://streetlookup.com/cleveland-map/",
+        "date": "2025-05-19",
+        "last_updated": "2025-07-04",
+        "snippet": "Cleveland, Ohio: Travel maps for business trips, address search, tourist attractions, sights, airports, parks, hotels, shopping, highways, shopping malls,",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] downtown-cleveland-map-180424.pdf",
+        "url": "https://www.thisiscleveland.com/ThisIsCleveland/media/Documents/Maps/downtown-cleveland-map-180424.pdf",
+        "date": null,
+        "last_updated": "2025-09-29",
+        "snippet": "Cleveland. Public Library. Louis Stokes. Wing. Mall A. Connor. Palace. State. Theatre. Cleveland. Police. Headquarters and Museum. Ohio. Theatre. Cleveland.",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Ohio Map Pictures, Images and Stock Photos - iStock",
+        "url": "https://www.istockphoto.com/photos/cleveland-ohio-map",
+        "date": "2021-05-14",
+        "last_updated": "2025-04-08",
+        "snippet": "Search from 514 Cleveland Ohio Map stock photos, pictures and royalty-free images from iStock. For the first time, get 1 free month of iStock exclusive ...",
+        "source": "web"
+      },
+      {
+        "title": "[PDF] Map of the City of Cleveland.pdf",
+        "url": "https://www.csuohio.edu/sites/default/files/Map%20of%20the%20City%20of%20Cleveland.pdf",
+        "date": null,
+        "last_updated": null,
+        "snippet": "EAST 17TH STREET. SUPERIOR AVENUE. PAYNE AVENUE. P. EAST 18TH STREE. MAJOR ATTRACTIONS. D4. C3 Cleveland Convention Center LAVEAUE. Cleveland Visitors Center.",
+        "source": "web"
+      },
+      {
+        "title": "Ohio City, Cleveland - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ohio_City,_Cleveland",
+        "date": "2005-11-10",
+        "last_updated": "2025-08-20",
+        "snippet": "Ohio City, Cleveland ; Location, Roughly Franklin Blvd. NW., W. 38th St., Bridge Ave. NW., & W. 44th St., & Stone, W. 25th, Bridge Ave. NW., & W. 28th, Cleveland ...",
+        "source": "web"
+      },
+      {
+        "title": "System Maps - Cleveland - RideRTA",
+        "url": "https://www.riderta.com/maps",
+        "date": null,
+        "last_updated": "2025-10-08",
+        "snippet": "Interactive System Map. Printable PDFs. Full System Map \u00b7 Rapid Transit System Map \u00b7 HealthLine Map \u00b7 Cleveland State Line \u00b7 Downtown Bus/Rapid Map.",
+        "source": "web"
+      },
+      {
+        "title": "916 results for cleveland map in all - Adobe Stock",
+        "url": "https://stock.adobe.com/search?k=cleveland+map",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Search from thousands of royalty-free Cleveland Map stock images and video for your next project. Download royalty-free stock photos, vectors, ...",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland Maps | Planning Tools",
+        "url": "https://www.thisiscleveland.com/planning-tools/visitor-resources/maps",
+        "date": null,
+        "last_updated": "2025-10-12",
+        "snippet": "Download and print the maps below to help you navigate the Cleveland region and find nearby hotels, restaurants and attractions.",
+        "source": "web"
+      },
+      {
+        "title": "Neighborhood Guide - Ohio City",
+        "url": "https://www.ohiocity.org/neighborhood-guide/",
+        "date": "2025-04-04",
+        "last_updated": "2025-10-10",
+        "snippet": "Welcome to Ohio City, one of Cleveland's most historic and vibrant neighborhoods! ... Neighborhood map. RETURN TO TOP. Map. Special events. RETURN TO TOP.",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"regions\":[\"North Ohio City (north of Detroit Avenue)\",\"Central Ohio City (between Detroit Avenue and Lorain Avenue)\",\"South Ohio City (south of Lorain Avenue)\",\"East Ohio City (east of West 25th Street)\",\"West Ohio City (west of West 44th Street)\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-12T18:28:31.206699"
+}

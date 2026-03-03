@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from gemini_client import GeminiClient
 from perplexity_client import PerplexityAPIClient
 from openai_client import OpenAIClient
+from content_extractor import extract_website, extract_pdf_from_upload, extract_pdf_from_url
 from utils import (
     detect_variables,
     substitute_variables,
@@ -45,6 +46,10 @@ DEFAULTS = {
     "openai_connected": False,
     "openai_results_df": None,
     "openai_variable_df": None,
+    # Content extraction state
+    "extracted_content": "",
+    "extracted_source": "",
+    "extracted_metadata": {},
 }
 for k, v in DEFAULTS.items():
     if k not in st.session_state:
@@ -312,7 +317,9 @@ if loaded:
 # ---------------------------------------------------------------------------
 # Main area — tabs
 # ---------------------------------------------------------------------------
-tab_gemini, tab_perplexity, tab_openai = st.tabs(["Gemini Batch", "Perplexity", "OpenAI"])
+tab_gemini, tab_perplexity, tab_openai, tab_extract = st.tabs(
+    ["Gemini Batch", "Perplexity", "OpenAI", "Content Extraction"]
+)
 
 # ========================  GEMINI BATCH TAB  ================================
 with tab_gemini:
@@ -871,3 +878,234 @@ with tab_openai:
             )
 
     render_results("openai")
+
+# ========================  CONTENT EXTRACTION TAB  ============================
+with tab_extract:
+    st.header("Content Extraction")
+    st.caption(
+        "Extract content from websites or PDFs. Use extracted text as a variable "
+        "in prompt templates across all provider tabs."
+    )
+
+    # ---- Extraction settings ----
+    with st.expander("Extraction Settings", expanded=False):
+        max_chars = st.number_input(
+            "Max content length (characters)",
+            min_value=1000,
+            max_value=500000,
+            value=50000,
+            step=5000,
+            key="extract_max_chars",
+            help="Content exceeding this limit will be truncated.",
+        )
+
+    # ---- Source selection ----
+    source_type = st.radio(
+        "Extraction source",
+        ["Website", "PDF Upload", "PDF from URL"],
+        horizontal=True,
+        key="extract_source_type",
+    )
+
+    # ---- Source-specific inputs ----
+    if source_type == "Website":
+        extract_url = st.text_input(
+            "URL to extract",
+            placeholder="https://example.com/article",
+            key="web_extract_url",
+        )
+
+        if st.button("Extract Website", key="extract_web_btn", type="primary"):
+            if not extract_url.strip():
+                st.error("Enter a URL.")
+            else:
+                with st.spinner("Extracting website content..."):
+                    result = extract_website(extract_url.strip())
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = extract_url
+                    st.session_state.extracted_metadata = {
+                        "type": "website",
+                        "title": result.get("title", ""),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"Extraction failed: {result['error']}")
+
+    elif source_type == "PDF Upload":
+        pdf_file = st.file_uploader(
+            "Upload PDF",
+            type=["pdf"],
+            key="pdf_upload",
+            help="Max file size: 50 MB",
+        )
+
+        if st.button("Extract PDF", key="extract_pdf_upload_btn", type="primary"):
+            if pdf_file is None:
+                st.error("Upload a PDF file.")
+            else:
+                with st.spinner("Extracting PDF content..."):
+                    result = extract_pdf_from_upload(pdf_file.read(), pdf_file.name)
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = pdf_file.name
+                    st.session_state.extracted_metadata = {
+                        "type": "pdf",
+                        "title": pdf_file.name,
+                        "page_count": result.get("page_count", 0),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words "
+                        f"({result.get('page_count', 0)} pages) in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"PDF extraction failed: {result['error']}")
+
+    else:  # PDF from URL
+        pdf_url = st.text_input(
+            "PDF URL",
+            placeholder="https://example.com/document.pdf",
+            key="pdf_extract_url",
+        )
+
+        if st.button("Extract PDF from URL", key="extract_pdf_url_btn", type="primary"):
+            if not pdf_url.strip():
+                st.error("Enter a PDF URL.")
+            else:
+                with st.spinner("Extracting PDF from URL..."):
+                    result = extract_pdf_from_url(pdf_url.strip())
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = pdf_url
+                    st.session_state.extracted_metadata = {
+                        "type": "pdf",
+                        "title": result.get("title", ""),
+                        "page_count": result.get("page_count", 0),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words "
+                        f"({result.get('page_count', 0)} pages) in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"PDF extraction failed: {result['error']}")
+
+    # ---- Preview extracted content ----
+    if st.session_state.extracted_content:
+        st.divider()
+        meta = st.session_state.extracted_metadata
+        info_parts = [f"Source: {st.session_state.extracted_source}"]
+        if meta.get("title"):
+            info_parts.append(f"Title: {meta['title']}")
+        if meta.get("page_count"):
+            info_parts.append(f"Pages: {meta['page_count']}")
+        info_parts.append(f"Words: {meta.get('word_count', 0):,}")
+        info_parts.append(f"Time: {meta.get('elapsed', 0)}s")
+        st.caption(" | ".join(info_parts))
+
+        st.text_area(
+            "Extracted Content (preview)",
+            value=st.session_state.extracted_content[:5000],
+            height=300,
+            disabled=True,
+            key="extract_preview",
+        )
+
+        # ---- Export buttons ----
+        ecol1, ecol2, ecol3 = st.columns(3)
+        with ecol1:
+            st.download_button(
+                "Download as Markdown",
+                data=st.session_state.extracted_content,
+                file_name="extracted_content.md",
+                mime="text/markdown",
+                key="extract_dl_md",
+            )
+        with ecol2:
+            st.download_button(
+                "Download as Text",
+                data=st.session_state.extracted_content,
+                file_name="extracted_content.txt",
+                mime="text/plain",
+                key="extract_dl_txt",
+            )
+        with ecol3:
+            if st.button("Clear Extracted Content", key="clear_extract"):
+                st.session_state.extracted_content = ""
+                st.session_state.extracted_source = ""
+                st.session_state.extracted_metadata = {}
+                st.rerun()
+
+        # ---- Send to provider tab ----
+        st.divider()
+        st.subheader("Use as LLM Context")
+        st.caption(
+            "Inject extracted content into a provider's variable table. "
+            "Then use the variable name (e.g. `{extracted_content}`) in your prompt template."
+        )
+
+        icol1, icol2 = st.columns(2)
+        with icol1:
+            target_provider = st.selectbox(
+                "Target provider tab",
+                ["gemini", "perplexity", "openai"],
+                key="inject_target",
+            )
+        with icol2:
+            var_name = st.text_input(
+                "Variable name",
+                value="extracted_content",
+                key="inject_var_name",
+            )
+
+        if st.button("Send to Tab", key="inject_btn", type="primary"):
+            if not var_name.strip():
+                st.error("Enter a variable name.")
+            else:
+                vn = var_name.strip()
+                df_key = f"{target_provider}_variable_df"
+                existing_df = st.session_state.get(df_key)
+
+                if existing_df is not None and not existing_df.empty:
+                    existing_df[vn] = st.session_state.extracted_content
+                    st.session_state[df_key] = existing_df
+                else:
+                    st.session_state[df_key] = pd.DataFrame(
+                        {vn: [st.session_state.extracted_content]}
+                    )
+                st.success(
+                    f"Injected into **{target_provider}** as variable "
+                    f"`{{{vn}}}`. Switch to the {target_provider.title()} tab "
+                    f"and add `{{{vn}}}` to your prompt template."
+                )

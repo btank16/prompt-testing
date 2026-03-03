@@ -6,3 +6,5 @@ perplexityai
 streamlit>=1.41.0
 google-genai>=1.0.0
 pandas>=2.0.0
+crawl4ai>=0.7.0
+docling>=2.50.0

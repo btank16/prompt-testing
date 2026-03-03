@@ -59,6 +59,41 @@ def substitute_variables(template: str, variables: dict) -> str:
     return template.format_map(_SafeDict(variables))
 
 
+def build_prompt(template: str, row_vars: dict) -> str:
+    """Build a prompt string by substituting variables into a template."""
+    return substitute_variables(template, row_vars) if row_vars else template
+
+
+def build_messages(system_prompt: str, user_content: str) -> list:
+    """Build an OpenAI-compatible messages list from system + user content."""
+    messages = []
+    if system_prompt and system_prompt.strip():
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user", "content": user_content})
+    return messages
+
+
+def parse_schema(use_schema: bool, schema_text: str, provider: str = None):
+    """Parse JSON schema text and optionally wrap for a provider.
+
+    Returns (raw_schema, response_format) tuple.
+    raw_schema is the parsed dict (for Gemini), response_format is the
+    provider-wrapped version (for OpenAI/Perplexity).
+    Raises json.JSONDecodeError on invalid JSON.
+    """
+    if not use_schema or not schema_text.strip():
+        return None, None
+    raw = json.loads(schema_text)
+    if provider:
+        return raw, build_response_format(provider, raw)
+    return raw, None
+
+
+def dataframe_to_rows(df, has_variables: bool) -> list:
+    """Convert a variable DataFrame to a list of row dicts for batch execution."""
+    return df.fillna("").to_dict(orient="records") if has_variables else [{}]
+
+
 def extract_schema_from_stored_format(stored_format) -> dict:
     """Convert from existing Perplexity/OpenAI schema wrapper format to raw JSON schema.
 

@@ -1,0 +1,156 @@
+{
+  "model": "sonar-pro",
+  "prompt": "I need you to look for apartments in Ohio City, Cleveland, Ohio. Please look for apartments with 2 bedroom and 1 bathroom. I am looking for apartment units at residential addresses (not apartment buildings). Please list all the addresses you can find in an array.",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information",
+  "url": "",
+  "search_params": {
+    "domain_filter": "redfin.com, apartments.com, zillow.com",
+    "recency_filter": "none",
+    "context_size": "high",
+    "after_date": "",
+    "before_date": "",
+    "return_images": false,
+    "return_questions": false
+  },
+  "location": {
+    "latitude": "",
+    "longitude": "",
+    "country": ""
+  },
+  "llm_params": {
+    "temperature": 0.19999999999999996,
+    "max_tokens": "",
+    "top_p": "",
+    "frequency_penalty": "",
+    "presence_penalty": ""
+  },
+  "use_json": true,
+  "json_format": "{\n  \"type\": \"json_schema\",\n  \"json_schema\": {\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"addresses\": {\n          \"type\": \"array\",\n          \"items\": {\"type\": \"string\"}\n        }\n      },\n      \"required\": [\"addresses\"]\n    }\n  }\n}",
+  "response": {
+    "id": "87c0de20-1eab-404f-991d-5f1b25bd273e",
+    "model": "sonar-pro",
+    "created": 1761092051,
+    "usage": {
+      "prompt_tokens": 107,
+      "completion_tokens": 231,
+      "total_tokens": 338,
+      "search_context_size": "high",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.003,
+        "request_cost": 0.014,
+        "total_cost": 0.018
+      }
+    },
+    "citations": [
+      "https://www.apartments.com/ohio-city-cleveland-oh/2-bedrooms/",
+      "https://www.apartments.com/cleveland-oh/2-bedrooms/",
+      "https://www.apartments.com/downtown-cleveland-cleveland-oh/2-bedrooms/",
+      "https://www.apartments.com/ohio-city-cleveland-oh/",
+      "https://www.redfin.com/neighborhood/150814/OH/Cleveland/Ohio-City/2-bedroom-rentals",
+      "https://www.zillow.com/cleveland-oh/apartments-2-bedrooms/",
+      "https://www.zillow.com/ohio-city-cleveland-oh/apartments/",
+      "https://www.apartments.com/cleveland-oh/",
+      "https://www.apartments.com/ohio-city-cleveland-oh/utilities-included/2/",
+      "https://www.zillow.com/renter-hub/clickRedirect?alias=3bjnf5kncfctk&r=zillow&mobileFriendly=true"
+    ],
+    "search_results": [
+      {
+        "title": "Ohio City 2 Bedroom Apartments for Rent - Cleveland, OH",
+        "url": "https://www.apartments.com/ohio-city-cleveland-oh/2-bedrooms/",
+        "date": "2025-10-22",
+        "last_updated": "2025-10-22",
+        "snippet": "Find your ideal 2 bedroom apartment in Ohio City, Cleveland, OH. Discover 401 spacious units for rent with modern amenities and a variety of floor plans to ...",
+        "source": "web"
+      },
+      {
+        "title": "Cleveland, OH - 2 Bedroom Apartments for Rent",
+        "url": "https://www.apartments.com/cleveland-oh/2-bedrooms/",
+        "date": "2025-10-22",
+        "last_updated": "2025-10-22",
+        "snippet": "Browse 1,897 two-bedroom apartments for rent in Cleveland, OH on Apartments.com, ideal for roommates or anyone looking for extra space. Whether you're working ...",
+        "source": "web"
+      },
+      {
+        "title": "Downtown Cleveland 2 Bedroom Apartments for Rent",
+        "url": "https://www.apartments.com/downtown-cleveland-cleveland-oh/2-bedrooms/",
+        "date": "2025-10-22",
+        "last_updated": "2025-10-22",
+        "snippet": "Find your ideal 2 bedroom apartment in Downtown Cleveland, Cleveland, OH. Discover 734 spacious units for rent with modern amenities and a variety of floor ...",
+        "source": "web"
+      },
+      {
+        "title": "Ohio City Apartments for Rent - Cleveland, OH",
+        "url": "https://www.apartments.com/ohio-city-cleveland-oh/",
+        "date": "2025-10-22",
+        "last_updated": "2025-10-22",
+        "snippet": "Get a great Ohio City, Cleveland, OH rental on Apartments.com! Use our search filters to browse all 1060 apartments and score your perfect place!",
+        "source": "web"
+      },
+      {
+        "title": "2 Bedroom Rentals in Ohio City, Cleveland, OH",
+        "url": "https://www.redfin.com/neighborhood/150814/OH/Cleveland/Ohio-City/2-bedroom-rentals",
+        "date": "2025-10-21",
+        "last_updated": "2025-10-22",
+        "snippet": "Find 2 bedroom rentals in Ohio City, Cleveland, OH, view photos, request tours, and more. Use our Ohio City, Cleveland, OH rental filters to find a 2 ...",
+        "source": "web"
+      },
+      {
+        "title": "2 Bedroom Apartments For Rent in Cleveland OH",
+        "url": "https://www.zillow.com/cleveland-oh/apartments-2-bedrooms/",
+        "date": "2025-10-17",
+        "last_updated": "2025-10-17",
+        "snippet": "Residences at Leader | 526 Superior Ave E, Cleveland, OH. $1,737+ 2 bds \u00b7 Residences at Leader. $1,737+ ; The 41 | 2021 W 41st St, Cleveland, OH. $2,399+ 2 bds.",
+        "source": "web"
+      },
+      {
+        "title": "Apartments For Rent in Ohio City Cleveland - 167 Rentals",
+        "url": "https://www.zillow.com/ohio-city-cleveland-oh/apartments/",
+        "date": "2025-10-20",
+        "last_updated": "2025-10-20",
+        "snippet": "Find your next apartment in Ohio City Cleveland on Zillow. Use our detailed filters to find the perfect place, then get in touch with the property manager.",
+        "source": "web"
+      },
+      {
+        "title": "Apartments for Rent in Cleveland OH - 5613 Rentals",
+        "url": "https://www.apartments.com/cleveland-oh/",
+        "date": "2025-10-22",
+        "last_updated": "2025-10-22",
+        "snippet": "Find 5613 apartments in Cleveland, OH with new listings daily. Compare verified, detailed unit listings, explore 3D tours, and find your next rental today.",
+        "source": "web"
+      },
+      {
+        "title": "Ohio City Apartments for Rent with Utilities Included",
+        "url": "https://www.apartments.com/ohio-city-cleveland-oh/utilities-included/2/",
+        "date": "2025-03-25",
+        "last_updated": "2025-03-25",
+        "snippet": "Enjoy hassle-free living in Ohio City, Cleveland, OH when you rent an apartment with utilities included. Find 241 units for rent with ...",
+        "source": "web"
+      },
+      {
+        "title": "Church + State Apartments | Ohio City Cleveland Apartments ...",
+        "url": "https://www.zillow.com/renter-hub/clickRedirect?alias=3bjnf5kncfctk&r=zillow&mobileFriendly=true",
+        "date": null,
+        "last_updated": null,
+        "snippet": "Our 158 well-appointed luxury apartments are located at the corner of Church Ave. and State St. (now W. 29th Street) in one of the most vibrant, walkable, and ...",
+        "source": "web"
+      }
+    ],
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"addresses\":[\"2292 W 40th St, Cleveland, OH 44113\",\"4210 Clinton Ave, Cleveland, OH 44113\",\"2187 W 32nd St Unit 1, Cleveland, OH 44113\",\"4115 Whitman Ave Unit B, Cleveland, OH 44113\",\"4301 Bailey Ave, Cleveland, OH 44113\",\"1873 W 47th St Unit 4/UP REAR, Cleveland, OH 44102\",\"3224 Monroe Ave, Cleveland, OH 44113\",\"3026 Monroe Ave, Cleveland, OH 44113\",\"4200 Whitman Ave Unit 2, Cleveland, OH 44113\",\"3402 Bridge Ave, Cleveland, OH 44113\",\"1835 W 52nd St #1837, Cleveland, OH 44102\",\"3029 Mabel Ct #3, Cleveland, OH 44113\",\"1851 W 45th St UNIT 1, Cleveland, OH 44102\",\"3903 Bailey Ave #2, Cleveland, OH 44113\",\"1959 W 50th St #1, Cleveland, OH 44102\"]}"
+        },
+        "delta": {
+          "role": "assistant",
+          "content": ""
+        }
+      }
+    ]
+  },
+  "timestamp": "2025-10-21T21:53:47.760065"
+}

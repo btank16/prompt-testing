@@ -3,3 +3,6 @@ python-dotenv>=1.0.0
 jsonschema>=4.20.0
 customtkinter>=5.2.0
 perplexityai
+streamlit>=1.41.0
+google-genai>=1.0.0
+pandas>=2.0.0

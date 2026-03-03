@@ -1,0 +1,857 @@
+{
+  "model": "gemini-3-flash-preview",
+  "prompt_template": "I need you to research the following {city}, {state} group on meetup.com: {group}. Please find me the link to this meetup group and the group organizers. To find the organizers please look under \"members\" and \"leadership team\". That is where the current organizers are listed. If there are multiple owners, please include all names in a list in your output. For the links, only provide valid links",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "json_schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"link\": {\n      \"type\": \"string\"\n    },\n    \"owner\": {\n      \"type\": \"string\"\n    }\n  },\n  \"propertyOrdering\": [\n    \"link\",\n    \"owner\"\n  ],\n  \"required\": [\n    \"link\",\n    \"owner\"\n  ]\n}",
+  "llm_params": {
+    "temperature": 1.0,
+    "max_output_tokens": 16384,
+    "top_p": 0.95,
+    "thinking_level": "low"
+  },
+  "grounding": {
+    "google_search": true,
+    "url_context": false
+  },
+  "batch_settings": {
+    "delay_between": 0.5,
+    "max_workers": 5
+  },
+  "variable_data": [
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Cleveland Real Estate Think Tank"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Akron Canton Real Estate Investing"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Investors And Real Estate Professionals Meetup"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "BCF - Cleveland Real Estate Meetup"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Real Estate Wealth Institute- Cleveland"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Greater Cleveland Real Estate Investors Association"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Black Belt Investors - Real Estate Investing - Independence"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Cleveland Real Estate Investors Meetup Group"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Cleveland Real Estate Investing Meetup Group"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "Subto\u270c\ufe0f Cleveland [Real Estate Meetup Group]"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "The Cash-Flow Breakfast Club \u2013 Cleveland OH REI"
+    },
+    {
+      "city": "Cleveland",
+      "state": "OH",
+      "group": "North Canton Commercial Real Estate Meetup"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "COREE Community of Real Estate Entrepreneurs"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Columbus Real Estate Investors Association ColumbusREIA.com"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Real Estate Investing for Beginners Columbus, OH"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Real Estate Wealth Institute-Columbus"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Beginner and Active Real Estate Investors"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Mid-Ohio Real Estate Investors Association Meetup"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Ohio Unstoppable Multifamily, and Storage Investing"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Real Estate Networking - Columbus, Ohio, USA"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH",
+      "group": "Columbus Investors Club"
+    },
+    {
+      "city": "Cincinnati",
+      "state": "OH",
+      "group": "The Real Estate Investors Association of Greater Cincinnati"
+    },
+    {
+      "city": "Cincinnati",
+      "state": "OH",
+      "group": "Cincinnati Real Estate Investors Meetup Group"
+    },
+    {
+      "city": "Cincinnati",
+      "state": "OH",
+      "group": "Queen City Real Estate Investors Association"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "National Real Estate Investors Network"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Real Estate Investors Association of Oakland (Metro Detroit)"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Ann Arbor Real Estate Investors Club"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Real Estate Investors Association (REIA) of Detroit Michigan"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "REIA (REAL ESTATE INVESTORS ASSOCIATION) of Wayne County"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Detroit Real Estate Investors"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Metro Detroit Commercial Real Estate Group"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Real Estate Wealth Institute- Metro Detroit-Oakland County"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Real Estate Wealth Institute- Metro Detroit- Macomb County"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Real Estate Wealth Institute- Detroit"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI",
+      "group": "Michigan Real Estate Investors"
+    },
+    {
+      "city": "Grand Rapids",
+      "state": "MI",
+      "group": "Grand Rapids Real Estate Investor Networking Group"
+    },
+    {
+      "city": "Grand Rapids",
+      "state": "MI",
+      "group": "616 Real Estate Investors Meetup"
+    },
+    {
+      "city": "Indianapolis",
+      "state": "IN",
+      "group": "Indianapolis Real Estate Club: Networking and Coaching"
+    },
+    {
+      "city": "Indianapolis",
+      "state": "IN",
+      "group": "Agent IMPACT Group - Real Estate Investing Indiana"
+    },
+    {
+      "city": "Indianapolis",
+      "state": "IN",
+      "group": "Indianapolis Real Estate Group Investments Meetup Group"
+    },
+    {
+      "city": "South Bend",
+      "state": "IN",
+      "group": "LaPorte Real Estate Investors"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA",
+      "group": "Pittsburgh Real Estate Investor Network"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA",
+      "group": "ACREPgh.org Pittsburgh Real Estate Investors Meet Up Group"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA",
+      "group": "Coast 2 Coast Real Estate Networking"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA",
+      "group": "Real Estate Wealth Institute- Pittsburgh"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA",
+      "group": "Active Community of Real Estate Entrepreneurs - Westmoreland"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Philadelphia Real Estate Investors Association (PAREIA)"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "The Greater Philadelphia Real Estate Network"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Philly Real Estate Investors Network"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "DIG- Diversified Real Estate Investor Group Subgroups"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "PHILADELPHIA REAL ESTATE EXPERTS by Investor Schooling"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Philly Real Estate Leaders by Investor Schooling"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "The Greatest Real Estate Investment Group Ever"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Women Invest in Real Estate by Investor Schooling"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "MultiFamilyMasters - Philadelphia Area, PA"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Philadelphia Real Estate and Financial Freedom Meetup"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Rei on Tap Philadelphia"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Philly Metropolitan Real Estate Club"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "Creative Real Estate Investing by Investor Schooling"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA",
+      "group": "The Real Estate Underground"
+    },
+    {
+      "city": "Buffalo",
+      "state": "NY",
+      "group": "Buffalo Real Estate Talk"
+    },
+    {
+      "city": "Buffalo",
+      "state": "NY",
+      "group": "Real Investing Network - Buffalo Real Estate"
+    },
+    {
+      "city": "Buffalo",
+      "state": "NY",
+      "group": "Buffalo Real Estate Investing Meetup Group"
+    },
+    {
+      "city": "Syracuse",
+      "state": "NY",
+      "group": "Onondaga County Real Estate Investors Club"
+    },
+    {
+      "city": "Syracuse",
+      "state": "NY",
+      "group": "Upstate Commercial Apartment Investors Group - Syracuse"
+    },
+    {
+      "city": "Albany",
+      "state": "NY",
+      "group": "Mohawk Hudson Investors Exchange REI Meet Up"
+    },
+    {
+      "city": "Rochester",
+      "state": "NY",
+      "group": "FFREIA - Freedom First Real Estate Investor's Association"
+    },
+    {
+      "city": "Rochester",
+      "state": "NY",
+      "group": "RocWIRE - Rochester Women In Real Estate"
+    },
+    {
+      "city": "Rochester",
+      "state": "NY",
+      "group": "Rochester Real Estate Meet Up Group"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association (Chicago REIA)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Multifamily Club"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Area Real Estate Investors Association (CAREIA)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Real Estate Wealth Institute- Chicago"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Meetup"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association (Tinley Park)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Creative Investors Association"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Real Estate Investing, Networking, & Training"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago RING Meeting (Real Estate Investor Networking Group)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Real Estate Crowdfunding Chicago"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "The Chicago Real Estate Networking Group"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Cashflow Multifamily Investors"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicagoland Real Estate Deal Maker Sessions"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investment Networking Group"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association- Algonquin"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Windy City REI - GOB Network Chicagoland Affiliate"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association (St. Charles)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association (Libertyville)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investing Empowerment"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association (Joliet)"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Aurora/Naperville Cashflow 101 Game Night"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Suburban Real Estate Group"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Real Estate Investing For Everyone"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Official CASHFLOW\u00ae 101 & CASHFLOW\u00ae 202 Events"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicagoland Real Estate Investors Network"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Airbnb, Vrbo, & STR Hosts [Hosts Helping Hosts]"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Women Real Estate Network"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "SouthEast Chicago Real Estate Club"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Women in Business Networking Meetup"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Mastermind Group"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Investors Association Lombard IL"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Short Term Rental Investor"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Finance Meets Real Estate - Chicago"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "BRRRR Chicago Real Estate"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Housing and Urban Life Bookclub"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Chicago Real Estate Connect"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "Aurora-Chicago New REI"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL",
+      "group": "North Suburban Housing Providers"
+    },
+    {
+      "city": "Peoria",
+      "state": "IL",
+      "group": "Real Estate Investor Meet-up - Peoria"
+    },
+    {
+      "city": "Milwaukee",
+      "state": "WI",
+      "group": "Milwaukee REIA -- Real Estate Investor Association"
+    },
+    {
+      "city": "Milwaukee",
+      "state": "WI",
+      "group": "Wisconsin Commercial Real Estate Investors"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO",
+      "group": "St. Louis Real Estate Investment Group"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO",
+      "group": "St. Louis Commercial & Residential Real Estate Network"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO",
+      "group": "St. Louis Real Estate Investors Association, Inc.\u2122 STLREIA\u2122"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO",
+      "group": "Saint Louis Real Estate Investing Meetup Group"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO",
+      "group": "The Spirit of St. Louis Real Estate Club"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Real Estate Investing Meetup"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Northland KC Real Estate Investment Group"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Kansas City Real Estate Mentoring and Networking Group"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Kansas City Real Estate Investor Meetup"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Bridge Real Estate Investing Meetup"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO",
+      "group": "Kansas City Real Estate Investment Hour"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "Baltimore Real Estate Investing Meetup Group"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "GRID Baltimore"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "Real Estate Investor Meetup Group DMV"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "MD Real Estate Investors Meetup"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "Rehabber Pro Baltimore City Real Estate Meetup"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "MultiFamilyMasters - Baltimore, Maryland"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD",
+      "group": "Rehabber Pro Bowie Real Estate Meetup"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston Real Estate Investors Association"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "New England Real Estate Investors Unleashed"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston Real Estate Connection"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston Real Estate Investor Club"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "New England Real Estate Investors Association"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Black Diamond Real Estate Investors"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston Real Estate Networking"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston Real Estate Guild-"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Boston - Community of Real Estate Investors"
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "group": "Real Estate Networking Events- MA Area"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Minnesota Real Estate Investors Community"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Minneapolis Network of Real Estate Investors"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Real Estate Investing MADE SIMPLE"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Twin Cities Real Estate Investing"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Minneapolis Real Estate Investing for Beginners"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "Minnesota Real Estate Club-MNREC Meetup"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN",
+      "group": "West Metro Real Estate Meetup"
+    },
+    {
+      "city": "Knoxville",
+      "state": "TN",
+      "group": "GRID Knoxville"
+    },
+    {
+      "city": "Knoxville",
+      "state": "TN",
+      "group": "KnoxREIA - Knoxville Real Estate Investors Association"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Tennessee Real Estate Agent & Investors Network"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Nashville Multifamily Meetup"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Investing: Free Education and Mentoring(Nashville)"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Wealth Institute- Nashville"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Comma Creators Multifamily Community - Nashville Meetup"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Nashville Monumental Multifamily Investing Meetup Group"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Nashville Real Estate Meetup"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Nashville/Clarksville Real Estate Investor Mentorship & Deal"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Middle TN Women's Real Estate Investing Meetup"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Investing Conference Nashville TN IBL26"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Investors of Nashville (REIN) Meetup Group"
+    },
+    {
+      "city": "Chattanooga",
+      "state": "TN",
+      "group": "Chattanooga Real Estate Investing Newbies & Entrepreneurs"
+    },
+    {
+      "city": "Chattanooga",
+      "state": "TN",
+      "group": "Chattanooga Real Estate Investors Alliance: Chattanooga REIA"
+    },
+    {
+      "city": "Chattanooga",
+      "state": "TN",
+      "group": "Chattanooga REIA Meetup Group"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Tennessee Real Estate Agent & Investors Network"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Tennessee Real Estate Investors"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Investing: Free Education and Mentoring(Nashville)"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Wealth Institute- Nashville"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Nashville Real Estate Meetup"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN",
+      "group": "Real Estate Investors of Nashville (REIN) Meetup Group"
+    }
+  ]
+}

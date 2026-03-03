@@ -1,0 +1,122 @@
+{
+  "model": "gemini-3-pro-preview",
+  "prompt_template": "I need you to search meetup.com for groups in {city}, {state}. Please filter for \"Groups\" and \"Career & Business\". Then find me groups with the key word \"Real Estate\". I need you to gather data for up to 100 groups from your search. Please only record the groups that use the word \"Real Estate\" in their name. For each group you find, find me the following information:\nname: Name of the group\nmembers: the number of members in the group",
+  "system_prompt": "Only give me the value requested in the JSON format. If you are not able to get search results or find relevant information, please state that clearly rather than providing speculative information. Do this by leaving the json field empty if you cannot find relevant information.",
+  "json_schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    },\n    \"members\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  },\n  \"propertyOrdering\": [\n    \"name\",\n    \"members\"\n  ],\n  \"required\": [\n    \"name\",\n    \"members\"\n  ]\n}",
+  "llm_params": {
+    "temperature": 1.0,
+    "max_output_tokens": 16384,
+    "top_p": 0.95,
+    "thinking_level": "high"
+  },
+  "grounding": {
+    "google_search": true,
+    "url_context": false
+  },
+  "batch_settings": {
+    "delay_between": 0.5,
+    "max_workers": 5
+  },
+  "variable_data": [
+    {
+      "city": "Clevelad",
+      "state": "OH"
+    },
+    {
+      "city": "Columbus",
+      "state": "OH"
+    },
+    {
+      "city": "Cincinnati",
+      "state": "OH"
+    },
+    {
+      "city": "Detroit",
+      "state": "MI"
+    },
+    {
+      "city": "Grand Rapids",
+      "state": "MI"
+    },
+    {
+      "city": "Indianapolis",
+      "state": "IN"
+    },
+    {
+      "city": "South Bend",
+      "state": "IN"
+    },
+    {
+      "city": "Pittsburgh",
+      "state": "PA"
+    },
+    {
+      "city": "Philadelphia",
+      "state": "PA"
+    },
+    {
+      "city": "Buffalo",
+      "state": "NY"
+    },
+    {
+      "city": "Syracuse",
+      "state": "NY"
+    },
+    {
+      "city": "Albany",
+      "state": "NY"
+    },
+    {
+      "city": "Rochester",
+      "state": "NY"
+    },
+    {
+      "city": "Chicago",
+      "state": "IL"
+    },
+    {
+      "city": "Peoria",
+      "state": "IL"
+    },
+    {
+      "city": "Milwaukee",
+      "state": "WI"
+    },
+    {
+      "city": "St Louis",
+      "state": "MO"
+    },
+    {
+      "city": "Kansas City",
+      "state": "MO"
+    },
+    {
+      "city": "Baltimore",
+      "state": "MD"
+    },
+    {
+      "city": "Boston",
+      "state": "MA"
+    },
+    {
+      "city": "Minneapolis",
+      "state": "MN"
+    },
+    {
+      "city": "Knoxville",
+      "state": "TN"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN"
+    },
+    {
+      "city": "Chattanooga",
+      "state": "TN"
+    },
+    {
+      "city": "Nashville",
+      "state": "TN"
+    }
+  ]
+}

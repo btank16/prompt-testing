@@ -1,20 +1,18 @@
 import streamlit as st
 import pandas as pd
 import json
-import time
 import os
 from dotenv import load_dotenv
 
 from gemini_client import GeminiClient
 from perplexity_client import PerplexityAPIClient
 from openai_client import OpenAIClient
+from content_extractor import extract_website, extract_pdf_from_upload, extract_pdf_from_url
 from utils import (
-    detect_variables,
-    substitute_variables,
     extract_schema_from_stored_format,
-    normalize_response,
     detect_provider_from_model,
-    build_response_format,
+    parse_schema,
+    dataframe_to_rows,
 )
 from batch_helpers import (
     render_prompt_inputs,
@@ -24,6 +22,8 @@ from batch_helpers import (
     build_results_dataframe,
     render_results,
 )
+from llm_helpers import make_batch_call_fn
+from tab_search_analyze import render_search_analyze_tab
 
 load_dotenv()
 
@@ -45,6 +45,14 @@ DEFAULTS = {
     "openai_connected": False,
     "openai_results_df": None,
     "openai_variable_df": None,
+    # Content extraction state
+    "extracted_content": "",
+    "extracted_source": "",
+    "extracted_metadata": {},
+    # Search & Analyze state
+    "sa_results_df": None,
+    "sa_variable_df": None,
+    "sa_pipeline_log": [],
 }
 for k, v in DEFAULTS.items():
     if k not in st.session_state:
@@ -52,53 +60,31 @@ for k, v in DEFAULTS.items():
 
 
 # ---------------------------------------------------------------------------
-# Client init helpers
+# Client init — single generic function replaces three identical ones
 # ---------------------------------------------------------------------------
-def _init_gemini(api_key: str):
+_CLIENT_CLASSES = {
+    "gemini": GeminiClient,
+    "perplexity": PerplexityAPIClient,
+    "openai": OpenAIClient,
+}
+
+
+def _init_client(provider: str, api_key: str):
     try:
-        st.session_state.gemini_client = GeminiClient(api_key)
-        st.session_state.gemini_connected = True
+        st.session_state[f"{provider}_client"] = _CLIENT_CLASSES[provider](api_key)
+        st.session_state[f"{provider}_connected"] = True
     except Exception as e:
-        st.session_state.gemini_client = None
-        st.session_state.gemini_connected = False
-        st.error(f"Gemini init failed: {e}")
-
-
-def _init_perplexity(api_key: str):
-    try:
-        st.session_state.perplexity_client = PerplexityAPIClient(api_key)
-        st.session_state.perplexity_connected = True
-    except Exception as e:
-        st.session_state.perplexity_client = None
-        st.session_state.perplexity_connected = False
-        st.error(f"Perplexity init failed: {e}")
-
-
-def _init_openai(api_key: str):
-    try:
-        st.session_state.openai_client = OpenAIClient(api_key)
-        st.session_state.openai_connected = True
-    except Exception as e:
-        st.session_state.openai_client = None
-        st.session_state.openai_connected = False
-        st.error(f"OpenAI init failed: {e}")
+        st.session_state[f"{provider}_client"] = None
+        st.session_state[f"{provider}_connected"] = False
+        st.error(f"{provider.title()} init failed: {e}")
 
 
 # Auto-load keys from .env on first run
-if st.session_state.gemini_client is None:
-    env_key = os.getenv("GEMINI_API_KEY", "")
-    if env_key:
-        _init_gemini(env_key)
-
-if st.session_state.perplexity_client is None:
-    env_key = os.getenv("PERPLEXITY_API_KEY", "")
-    if env_key:
-        _init_perplexity(env_key)
-
-if st.session_state.openai_client is None:
-    env_key = os.getenv("OPENAI_API_KEY", "")
-    if env_key:
-        _init_openai(env_key)
+for _provider, _env_var in [("gemini", "GEMINI_API_KEY"), ("perplexity", "PERPLEXITY_API_KEY"), ("openai", "OPENAI_API_KEY")]:
+    if st.session_state[f"{_provider}_client"] is None:
+        _key = os.getenv(_env_var, "")
+        if _key:
+            _init_client(_provider, _key)
 
 # ---------------------------------------------------------------------------
 # Sidebar
@@ -106,59 +92,29 @@ if st.session_state.openai_client is None:
 with st.sidebar:
     st.title("LLM Prompt Tester")
 
-    # --- API Keys ---
+    # --- API Keys (loop replaces three identical expander blocks) ---
     st.subheader("API Keys")
-
-    with st.expander("Gemini", expanded=not st.session_state.gemini_connected):
-        gem_key = st.text_input(
-            "Gemini API Key",
-            type="password",
-            value=os.getenv("GEMINI_API_KEY", ""),
-            key="gem_key_input",
-        )
-        if st.button("Connect", key="gem_connect"):
-            if gem_key:
-                _init_gemini(gem_key)
+    for _provider, _label, _env_var, _key_widget, _btn_key in [
+        ("gemini", "Gemini", "GEMINI_API_KEY", "gem_key_input", "gem_connect"),
+        ("perplexity", "Perplexity", "PERPLEXITY_API_KEY", "pplx_key_input", "pplx_connect"),
+        ("openai", "OpenAI", "OPENAI_API_KEY", "oai_key_input", "oai_connect"),
+    ]:
+        with st.expander(_label, expanded=not st.session_state[f"{_provider}_connected"]):
+            _key_val = st.text_input(
+                f"{_label} API Key",
+                type="password",
+                value=os.getenv(_env_var, ""),
+                key=_key_widget,
+            )
+            if st.button("Connect", key=_btn_key):
+                if _key_val:
+                    _init_client(_provider, _key_val)
+                else:
+                    st.warning("Enter an API key")
+            if st.session_state[f"{_provider}_connected"]:
+                st.success("Connected")
             else:
-                st.warning("Enter an API key")
-        if st.session_state.gemini_connected:
-            st.success("Connected")
-        else:
-            st.error("Not connected")
-
-    with st.expander("Perplexity", expanded=not st.session_state.perplexity_connected):
-        pplx_key = st.text_input(
-            "Perplexity API Key",
-            type="password",
-            value=os.getenv("PERPLEXITY_API_KEY", ""),
-            key="pplx_key_input",
-        )
-        if st.button("Connect", key="pplx_connect"):
-            if pplx_key:
-                _init_perplexity(pplx_key)
-            else:
-                st.warning("Enter an API key")
-        if st.session_state.perplexity_connected:
-            st.success("Connected")
-        else:
-            st.error("Not connected")
-
-    with st.expander("OpenAI", expanded=not st.session_state.openai_connected):
-        oai_key = st.text_input(
-            "OpenAI API Key",
-            type="password",
-            value=os.getenv("OPENAI_API_KEY", ""),
-            key="oai_key_input",
-        )
-        if st.button("Connect", key="oai_connect"):
-            if oai_key:
-                _init_openai(oai_key)
-            else:
-                st.warning("Enter an API key")
-        if st.session_state.openai_connected:
-            st.success("Connected")
-        else:
-            st.error("Not connected")
+                st.error("Not connected")
 
     st.divider()
 
@@ -312,7 +268,9 @@ if loaded:
 # ---------------------------------------------------------------------------
 # Main area — tabs
 # ---------------------------------------------------------------------------
-tab_gemini, tab_perplexity, tab_openai = st.tabs(["Gemini Batch", "Perplexity", "OpenAI"])
+tab_gemini, tab_perplexity, tab_openai, tab_extract, tab_search_analyze = st.tabs(
+    ["Gemini Batch", "Perplexity", "OpenAI", "Content Extraction", "Search & Analyze"]
+)
 
 # ========================  GEMINI BATCH TAB  ================================
 with tab_gemini:
@@ -398,53 +356,30 @@ with tab_gemini:
         elif not inputs["prompt_template"].strip():
             st.error("Enter a prompt template.")
         else:
-            client = st.session_state.gemini_client
+            try:
+                json_schema, _ = parse_schema(inputs["use_schema"], inputs["schema_text"])
+            except json.JSONDecodeError as e:
+                st.error(f"Invalid JSON schema: {e}")
+                st.stop()
 
-            json_schema = None
-            if inputs["use_schema"] and inputs["schema_text"].strip():
-                try:
-                    json_schema = json.loads(inputs["schema_text"])
-                except json.JSONDecodeError as e:
-                    st.error(f"Invalid JSON schema: {e}")
-                    st.stop()
+            rows = dataframe_to_rows(edited_df, bool(inputs["variables"]))
 
-            rows = (
-                edited_df.fillna("").to_dict(orient="records")
-                if inputs["variables"]
-                else [{}]
+            params = {
+                "temperature": gem_temperature,
+                "top_p": gem_top_p,
+                "max_output_tokens": gem_max_tokens,
+                "thinking_level": gem_thinking if gem_thinking != "none" else None,
+                "use_google_search": gem_google_search,
+                "use_url_context": gem_url_context,
+            }
+            call_fn = make_batch_call_fn(
+                "gemini", st.session_state.gemini_client, gem_model,
+                inputs["prompt_template"],
+                inputs["system_prompt"] if inputs["system_prompt"].strip() else None,
+                json_schema, params,
             )
 
-            def _gemini_call(idx, row_vars):
-                prompt = (
-                    substitute_variables(inputs["prompt_template"], row_vars)
-                    if row_vars
-                    else inputs["prompt_template"]
-                )
-                start = time.time()
-                try:
-                    resp = client.generate_content(
-                        model=gem_model,
-                        prompt=prompt,
-                        system_prompt=(
-                            inputs["system_prompt"]
-                            if inputs["system_prompt"].strip()
-                            else None
-                        ),
-                        json_schema=json_schema,
-                        temperature=gem_temperature,
-                        top_p=gem_top_p,
-                        max_output_tokens=gem_max_tokens,
-                        thinking_level=(
-                            gem_thinking if gem_thinking != "none" else None
-                        ),
-                        use_google_search=gem_google_search,
-                        use_url_context=gem_url_context,
-                    )
-                    return idx, row_vars, resp, time.time() - start, None
-                except Exception as e:
-                    return idx, row_vars, None, time.time() - start, str(e)
-
-            results = execute_batch(_gemini_call, rows, delay_between, max_workers)
+            results = execute_batch(call_fn, rows, delay_between, max_workers)
             st.session_state["gemini_results_df"] = build_results_dataframe(
                 results, inputs["variables"]
             )
@@ -576,17 +511,11 @@ with tab_perplexity:
         elif not inputs["prompt_template"].strip():
             st.error("Enter a prompt template.")
         else:
-            client = st.session_state.perplexity_client
-
-            # Parse schema
-            response_format = None
-            if inputs["use_schema"] and inputs["schema_text"].strip():
-                try:
-                    raw_schema = json.loads(inputs["schema_text"])
-                    response_format = build_response_format("perplexity", raw_schema)
-                except json.JSONDecodeError as e:
-                    st.error(f"Invalid JSON schema: {e}")
-                    st.stop()
+            try:
+                raw_schema, _ = parse_schema(inputs["use_schema"], inputs["schema_text"])
+            except json.JSONDecodeError as e:
+                st.error(f"Invalid JSON schema: {e}")
+                st.stop()
 
             # Build search params
             domain_list = None
@@ -607,62 +536,31 @@ with tab_perplexity:
                 if pplx_country.strip():
                     user_location["country"] = pplx_country.strip()
 
-            rows = (
-                edited_df.fillna("").to_dict(orient="records")
-                if inputs["variables"]
-                else [{}]
+            rows = dataframe_to_rows(edited_df, bool(inputs["variables"]))
+
+            params = {
+                "url": pplx_url if pplx_url.strip() else None,
+                "search_domain_filter": domain_list,
+                "search_recency_filter": recency,
+                "search_after_date_filter": pplx_after if pplx_after.strip() else None,
+                "search_before_date_filter": pplx_before if pplx_before.strip() else None,
+                "search_context_size": pplx_context_size,
+                "return_images": True if pplx_return_images else None,
+                "return_related_questions": True if pplx_return_questions else None,
+                "user_location": user_location,
+                "temperature": pplx_temperature,
+                "max_tokens": pplx_max_tokens,
+                "top_p": pplx_top_p,
+                "frequency_penalty": pplx_freq_penalty if pplx_freq_penalty != 0.0 else None,
+                "presence_penalty": pplx_pres_penalty if pplx_pres_penalty != 0.0 else None,
+            }
+            call_fn = make_batch_call_fn(
+                "perplexity", st.session_state.perplexity_client, pplx_model,
+                inputs["prompt_template"], inputs["system_prompt"],
+                raw_schema, params,
             )
 
-            def _perplexity_call(idx, row_vars):
-                prompt = (
-                    substitute_variables(inputs["prompt_template"], row_vars)
-                    if row_vars
-                    else inputs["prompt_template"]
-                )
-                messages = []
-                if inputs["system_prompt"].strip():
-                    messages.append(
-                        {"role": "system", "content": inputs["system_prompt"]}
-                    )
-                messages.append({"role": "user", "content": prompt})
-
-                start = time.time()
-                try:
-                    raw = client.chat_completion(
-                        model=pplx_model,
-                        messages=messages,
-                        response_format=response_format,
-                        url=pplx_url if pplx_url.strip() else None,
-                        search_domain_filter=domain_list,
-                        search_recency_filter=recency,
-                        search_after_date_filter=(
-                            pplx_after if pplx_after.strip() else None
-                        ),
-                        search_before_date_filter=(
-                            pplx_before if pplx_before.strip() else None
-                        ),
-                        search_context_size=pplx_context_size,
-                        return_images=True if pplx_return_images else None,
-                        return_related_questions=(
-                            True if pplx_return_questions else None
-                        ),
-                        user_location=user_location,
-                        temperature=pplx_temperature,
-                        max_tokens=pplx_max_tokens,
-                        top_p=pplx_top_p,
-                        frequency_penalty=(
-                            pplx_freq_penalty if pplx_freq_penalty != 0.0 else None
-                        ),
-                        presence_penalty=(
-                            pplx_pres_penalty if pplx_pres_penalty != 0.0 else None
-                        ),
-                    )
-                    resp = normalize_response("perplexity", raw)
-                    return idx, row_vars, resp, time.time() - start, None
-                except Exception as e:
-                    return idx, row_vars, None, time.time() - start, str(e)
-
-            results = execute_batch(_perplexity_call, rows, delay_between, max_workers)
+            results = execute_batch(call_fn, rows, delay_between, max_workers)
             st.session_state["perplexity_results_df"] = build_results_dataframe(
                 results, inputs["variables"], include_citations=True
             )
@@ -803,71 +701,275 @@ with tab_openai:
         elif not inputs["prompt_template"].strip():
             st.error("Enter a prompt template.")
         else:
-            client = st.session_state.openai_client
+            try:
+                raw_schema, _ = parse_schema(inputs["use_schema"], inputs["schema_text"])
+            except json.JSONDecodeError as e:
+                st.error(f"Invalid JSON schema: {e}")
+                st.stop()
 
-            # Parse schema
-            response_format = None
-            if inputs["use_schema"] and inputs["schema_text"].strip():
-                try:
-                    raw_schema = json.loads(inputs["schema_text"])
-                    response_format = build_response_format("openai", raw_schema)
-                except json.JSONDecodeError as e:
-                    st.error(f"Invalid JSON schema: {e}")
-                    st.stop()
+            rows = dataframe_to_rows(edited_df, bool(inputs["variables"]))
 
-            rows = (
-                edited_df.fillna("").to_dict(orient="records")
-                if inputs["variables"]
-                else [{}]
+            params = {
+                "max_tokens": oai_max_tokens,
+                "reasoning_effort": oai_reasoning,
+                "verbosity": oai_verbosity,
+            }
+            if oai_seed > 0:
+                params["seed"] = oai_seed
+            if oai_logprobs and not is_gpt5:
+                params["logprobs"] = True
+                if oai_top_logprobs is not None:
+                    params["top_logprobs"] = oai_top_logprobs
+            if not is_gpt5:
+                params["temperature"] = oai_temperature
+                params["top_p"] = oai_top_p
+                params["frequency_penalty"] = oai_freq_penalty
+                params["presence_penalty"] = oai_pres_penalty
+
+            call_fn = make_batch_call_fn(
+                "openai", st.session_state.openai_client, oai_model,
+                inputs["prompt_template"], inputs["system_prompt"],
+                raw_schema, params,
             )
 
-            def _openai_call(idx, row_vars):
-                prompt = (
-                    substitute_variables(inputs["prompt_template"], row_vars)
-                    if row_vars
-                    else inputs["prompt_template"]
-                )
-                messages = []
-                if inputs["system_prompt"].strip():
-                    messages.append(
-                        {"role": "system", "content": inputs["system_prompt"]}
-                    )
-                messages.append({"role": "user", "content": prompt})
-
-                kwargs = {
-                    "model": oai_model,
-                    "messages": messages,
-                    "max_tokens": oai_max_tokens,
-                    "reasoning_effort": oai_reasoning,
-                    "verbosity": oai_verbosity,
-                }
-                if response_format:
-                    kwargs["response_format"] = response_format
-                if oai_seed > 0:
-                    kwargs["seed"] = oai_seed
-                if oai_logprobs and not is_gpt5:
-                    kwargs["logprobs"] = True
-                    if oai_top_logprobs is not None:
-                        kwargs["top_logprobs"] = oai_top_logprobs
-
-                # Non-GPT-5 standard params
-                if not is_gpt5:
-                    kwargs["temperature"] = oai_temperature
-                    kwargs["top_p"] = oai_top_p
-                    kwargs["frequency_penalty"] = oai_freq_penalty
-                    kwargs["presence_penalty"] = oai_pres_penalty
-
-                start = time.time()
-                try:
-                    raw = client.chat_completion(**kwargs)
-                    resp = normalize_response("openai", raw)
-                    return idx, row_vars, resp, time.time() - start, None
-                except Exception as e:
-                    return idx, row_vars, None, time.time() - start, str(e)
-
-            results = execute_batch(_openai_call, rows, delay_between, max_workers)
+            results = execute_batch(call_fn, rows, delay_between, max_workers)
             st.session_state["openai_results_df"] = build_results_dataframe(
                 results, inputs["variables"]
             )
 
     render_results("openai")
+
+# ========================  CONTENT EXTRACTION TAB  ============================
+with tab_extract:
+    st.header("Content Extraction")
+    st.caption(
+        "Extract content from websites or PDFs. Use extracted text as a variable "
+        "in prompt templates across all provider tabs."
+    )
+
+    # ---- Extraction settings ----
+    with st.expander("Extraction Settings", expanded=False):
+        max_chars = st.number_input(
+            "Max content length (characters)",
+            min_value=1000,
+            max_value=500000,
+            value=50000,
+            step=5000,
+            key="extract_max_chars",
+            help="Content exceeding this limit will be truncated.",
+        )
+
+    # ---- Source selection ----
+    source_type = st.radio(
+        "Extraction source",
+        ["Website", "PDF Upload", "PDF from URL"],
+        horizontal=True,
+        key="extract_source_type",
+    )
+
+    # ---- Source-specific inputs ----
+    if source_type == "Website":
+        extract_url = st.text_input(
+            "URL to extract",
+            placeholder="https://example.com/article",
+            key="web_extract_url",
+        )
+
+        if st.button("Extract Website", key="extract_web_btn", type="primary"):
+            if not extract_url.strip():
+                st.error("Enter a URL.")
+            else:
+                with st.spinner("Extracting website content..."):
+                    result = extract_website(extract_url.strip())
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = extract_url
+                    st.session_state.extracted_metadata = {
+                        "type": "website",
+                        "title": result.get("title", ""),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"Extraction failed: {result['error']}")
+
+    elif source_type == "PDF Upload":
+        pdf_file = st.file_uploader(
+            "Upload PDF",
+            type=["pdf"],
+            key="pdf_upload",
+            help="Max file size: 50 MB",
+        )
+
+        if st.button("Extract PDF", key="extract_pdf_upload_btn", type="primary"):
+            if pdf_file is None:
+                st.error("Upload a PDF file.")
+            else:
+                with st.spinner("Extracting PDF content..."):
+                    result = extract_pdf_from_upload(pdf_file.read(), pdf_file.name)
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = pdf_file.name
+                    st.session_state.extracted_metadata = {
+                        "type": "pdf",
+                        "title": pdf_file.name,
+                        "page_count": result.get("page_count", 0),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words "
+                        f"({result.get('page_count', 0)} pages) in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"PDF extraction failed: {result['error']}")
+
+    else:  # PDF from URL
+        pdf_url = st.text_input(
+            "PDF URL",
+            placeholder="https://example.com/document.pdf",
+            key="pdf_extract_url",
+        )
+
+        if st.button("Extract PDF from URL", key="extract_pdf_url_btn", type="primary"):
+            if not pdf_url.strip():
+                st.error("Enter a PDF URL.")
+            else:
+                with st.spinner("Extracting PDF from URL..."):
+                    result = extract_pdf_from_url(pdf_url.strip())
+                if result["success"]:
+                    content = result["content"]
+                    if len(content) > max_chars:
+                        content = content[:max_chars]
+                        st.warning(
+                            f"Content truncated from {len(result['content']):,} "
+                            f"to {max_chars:,} characters."
+                        )
+                    st.session_state.extracted_content = content
+                    st.session_state.extracted_source = pdf_url
+                    st.session_state.extracted_metadata = {
+                        "type": "pdf",
+                        "title": result.get("title", ""),
+                        "page_count": result.get("page_count", 0),
+                        "word_count": len(content.split()),
+                        "elapsed": result.get("elapsed", 0),
+                    }
+                    st.success(
+                        f"Extracted {len(content.split()):,} words "
+                        f"({result.get('page_count', 0)} pages) in "
+                        f"{result.get('elapsed', 0)}s"
+                    )
+                else:
+                    st.error(f"PDF extraction failed: {result['error']}")
+
+    # ---- Preview extracted content ----
+    if st.session_state.extracted_content:
+        st.divider()
+        meta = st.session_state.extracted_metadata
+        info_parts = [f"Source: {st.session_state.extracted_source}"]
+        if meta.get("title"):
+            info_parts.append(f"Title: {meta['title']}")
+        if meta.get("page_count"):
+            info_parts.append(f"Pages: {meta['page_count']}")
+        info_parts.append(f"Words: {meta.get('word_count', 0):,}")
+        info_parts.append(f"Time: {meta.get('elapsed', 0)}s")
+        st.caption(" | ".join(info_parts))
+
+        st.text_area(
+            "Extracted Content (preview)",
+            value=st.session_state.extracted_content[:5000],
+            height=300,
+            disabled=True,
+            key="extract_preview",
+        )
+
+        # ---- Export buttons ----
+        ecol1, ecol2, ecol3 = st.columns(3)
+        with ecol1:
+            st.download_button(
+                "Download as Markdown",
+                data=st.session_state.extracted_content,
+                file_name="extracted_content.md",
+                mime="text/markdown",
+                key="extract_dl_md",
+            )
+        with ecol2:
+            st.download_button(
+                "Download as Text",
+                data=st.session_state.extracted_content,
+                file_name="extracted_content.txt",
+                mime="text/plain",
+                key="extract_dl_txt",
+            )
+        with ecol3:
+            if st.button("Clear Extracted Content", key="clear_extract"):
+                st.session_state.extracted_content = ""
+                st.session_state.extracted_source = ""
+                st.session_state.extracted_metadata = {}
+                st.rerun()
+
+        # ---- Send to provider tab ----
+        st.divider()
+        st.subheader("Use as LLM Context")
+        st.caption(
+            "Inject extracted content into a provider's variable table. "
+            "Then use the variable name (e.g. `{extracted_content}`) in your prompt template."
+        )
+
+        icol1, icol2 = st.columns(2)
+        with icol1:
+            target_provider = st.selectbox(
+                "Target provider tab",
+                ["gemini", "perplexity", "openai"],
+                key="inject_target",
+            )
+        with icol2:
+            var_name = st.text_input(
+                "Variable name",
+                value="extracted_content",
+                key="inject_var_name",
+            )
+
+        if st.button("Send to Tab", key="inject_btn", type="primary"):
+            if not var_name.strip():
+                st.error("Enter a variable name.")
+            else:
+                vn = var_name.strip()
+                df_key = f"{target_provider}_variable_df"
+                existing_df = st.session_state.get(df_key)
+
+                if existing_df is not None and not existing_df.empty:
+                    existing_df[vn] = st.session_state.extracted_content
+                    st.session_state[df_key] = existing_df
+                else:
+                    st.session_state[df_key] = pd.DataFrame(
+                        {vn: [st.session_state.extracted_content]}
+                    )
+                st.success(
+                    f"Injected into **{target_provider}** as variable "
+                    f"`{{{vn}}}`. Switch to the {target_provider.title()} tab "
+                    f"and add `{{{vn}}}` to your prompt template."
+                )
+
+# ========================  SEARCH & ANALYZE TAB  ==============================
+with tab_search_analyze:
+    render_search_analyze_tab(delay_between, max_workers)

@@ -1,8 +1,9 @@
 requests>=2.31.0
 python-dotenv>=1.0.0
 jsonschema>=4.20.0
-customtkinter>=5.2.0
 perplexityai
 streamlit>=1.41.0
 google-genai>=1.0.0
 pandas>=2.0.0
+crawl4ai>=0.7.0
+docling>=2.50.0

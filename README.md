@@ -1,31 +1,33 @@
-# LLM Prompt Tester - Perplexity Grounded LLM API
+# LLM Prompt Tester
 
-A comprehensive Python GUI application for testing prompts with Perplexity's Grounded LLM API, featuring advanced search capabilities, filtering options, and JSON response support.
+A Streamlit web application for testing and comparing prompts across multiple LLM providers — Perplexity, OpenAI, and Google Gemini — with batch processing, JSON schema support, and content extraction from websites and PDFs.
 
 ## Features
 
-### Core Capabilities
-- **Multiple Sonar Models**: Test with sonar, sonar-pro, sonar-reasoning, and sonar-deep-research
-- **Grounded Web Search**: Real-time web search integration with citation tracking
-- **JSON Response Support**: Request and validate JSON-formatted responses
-- **Token & Cost Tracking**: Monitor input, output, total tokens, and source citations
-- **Response Time Monitoring**: Track API response latency
-- **Test Management**: Save, load, and export test configurations
-- **Secure API Key Storage**: Store API keys in .env file (git-ignored)
+### Multi-Provider Support
+- **Perplexity** (Sonar models): Grounded web search with citation tracking, domain filtering, recency filters, date ranges, location-based search
+- **OpenAI** (GPT-5 family): Structured outputs, function calling, reasoning effort control
+- **Google Gemini**: Google Search grounding, URL context, configurable thinking levels
 
-### Advanced Search Parameters
-- **Domain Filtering**: Whitelist or blacklist up to 3 domains (use '-' prefix to exclude)
-- **Recency Filter**: Filter results by time (hour, day, week, month)
-- **Date Range Filtering**: Specify before/after dates in MM/DD/YYYY format
-- **Search Context Size**: Control search depth (low, medium, high)
-- **Location-Based Search**: Provide latitude, longitude, and country for localized results
-- **Return Options**: Toggle images and related questions in responses
+### Batch Processing
+- Template variables (`{city}`, `{country}`, etc.) with CSV upload or manual entry
+- Concurrent API execution with configurable workers and retry logic
+- Results displayed as DataFrames with export to CSV/TSV
+
+### JSON Schema Support
+- Define response schemas for structured JSON output
+- Provider-specific schema wrapping handled automatically
+- JSON validation and expansion of parallel arrays into rows
+
+### Content Extraction
+- **Website extraction** via crawl4ai — extracts web pages as clean Markdown
+- **PDF extraction** via Docling — AI-powered layout analysis, table reconstruction, OCR support
+- Extract standalone or inject content into prompt templates as variables
+- Export extracted content as Markdown or plain text
 
 ### LLM Parameters
-- **Temperature Control**: Adjustable creativity (0-2, default 0.2)
-- **Max Tokens**: Control response length
-- **Top-p Sampling**: Nucleus sampling parameter
-- **Frequency & Presence Penalties**: Fine-tune response generation
+- Temperature, top-p, max tokens, frequency/presence penalties
+- Provider-specific controls (reasoning effort, verbosity, thinking level)
 
 ## Setup
 
@@ -33,98 +35,60 @@ A comprehensive Python GUI application for testing prompts with Perplexity's Gro
 
 ```bash
 pip install -r requirements.txt
+crawl4ai-setup  # one-time browser setup for web extraction
 ```
 
-2. Create a `.env` file in the project root:
-
-3. Add your Perplexity API key to `.env`:
+2. Create a `.env` file in the project root with your API keys:
 
 ```
-PERPLEXITY_API_KEY=your_actual_api_key_here
+PERPLEXITY_API_KEY=your_perplexity_key
+OPENAI_API_KEY=your_openai_key
+GEMINI_API_KEY=your_gemini_key
 ```
 
-4. Run the application:
+3. Run the application:
 
 ```bash
-python llm_prompt_tester.py
+streamlit run app.py
+```
+
+Or use the launch script (macOS):
+
+```bash
+./launch.command
 ```
 
 ## Usage
 
-### Basic Setup
-1. **Configure API Key**: The app will automatically load your API key from `.env`
-2. **Select Model**: Choose from available Sonar models
-3. **Enter Prompt**: Type your test prompt in the input field
+1. **Connect API Keys**: Keys auto-load from `.env`, or enter them in the sidebar
+2. **Select a Tab**: Gemini Batch, Perplexity, OpenAI, or Content Extraction
+3. **Configure Prompt**: Enter system prompt, prompt template with `{variables}`, and optional JSON schema
+4. **Add Variables**: Upload CSV or manually enter variable values for batch runs
+5. **Run**: Execute batch with progress tracking and retry logic
+6. **Export**: Download results as CSV/TSV
 
-### Search Configuration
-1. **Reference URL** (Optional): Provide a specific webpage URL for context
-2. **Domain Filter**: Enter up to 3 domains separated by commas (e.g., `docs.com, -spam.com`)
-3. **Recency Filter**: Select time range for search results
-4. **Date Filters**: Set before/after dates for precise filtering
-5. **Search Context**: Choose between low, medium, or high context retrieval
-6. **Additional Options**: Enable images or related questions in responses
-
-### LLM Configuration
-1. **Temperature**: Adjust response creativity (default 0.2)
-2. **Max Tokens**: Set maximum response length
-3. **Advanced Parameters**: Configure top-p, frequency penalty, and presence penalty
-
-### JSON Response
-1. **Enable JSON Mode**: Check "Request JSON Response" to receive structured data
-2. **Custom Format**: Optionally provide expected JSON structure for validation
-
-### Location Settings
-1. **Coordinates**: Enter latitude and longitude for location-based search
-2. **Country Code**: Specify ISO country code (e.g., US, UK, FR)
-
-### Running Tests
-1. **Run Test**: Click to send request with all configured parameters
-2. **View Results**:
-   - Main response content
-   - Search results with citations
-   - Related questions (if enabled)
-   - Token usage and response time
-3. **Save/Load Tests**: Store and retrieve test configurations for reuse
+### Content Extraction Workflow
+1. Go to the **Content Extraction** tab
+2. Choose source: Website URL, PDF upload, or PDF URL
+3. Click Extract to get Markdown content
+4. Optionally click **Send to Tab** to inject content into a provider's variable table
+5. Reference it in your prompt template with `{extracted_content}`
 
 ## File Structure
 
-- `llm_prompt_tester.py` - Main GUI application
-- `perplexity_client.py` - Perplexity API client implementation
+- `app.py` - Streamlit web application (main entry point)
+- `gemini_client.py` - Google Gemini API client
+- `perplexity_client.py` - Perplexity API client
+- `openai_client.py` - OpenAI API client
+- `content_extractor.py` - Website (crawl4ai) and PDF (Docling) extraction
+- `batch_helpers.py` - Batch execution, retry logic, results rendering
+- `utils.py` - Variable detection/substitution, JSON normalization, response formatting
+- `Good_prompts/` - Saved prompt configurations (JSON)
+- `launch.command` - macOS launch script
 - `.env` - API key storage (git-ignored)
-- `.gitignore` - Excludes sensitive files from git
-- `requirements.txt` - Python dependencies
 
 ## Security Note
 
 - Never commit your `.env` file to git
-- The `.gitignore` file is configured to exclude all sensitive files
-- Keep your API key secure and rotate it regularly
-
-## Available Models
-
-- **sonar**: Fast, general-purpose model
-- **sonar-pro**: Enhanced model with more citations and context
-- **sonar-reasoning**: Multi-step reasoning capabilities
-- **sonar-deep-research**: Comprehensive research reports
-
-## API Integration
-
-The application leverages Perplexity's Grounded LLM API with comprehensive parameter support:
-
-### Supported Parameters
-- **Search Filtering**: Domain filters, recency filters, date ranges
-- **Search Options**: Context size, images, related questions
-- **Location**: Latitude, longitude, country for localized search
-- **LLM Controls**: Temperature, max tokens, top-p, penalties
-- **Response Format**: JSON-only responses with validation
-
-### Response Structure
-The API returns:
-- **Main Content**: The generated response
-- **Search Results**: Array of sources with titles, URLs, and dates
-- **Related Questions**: Follow-up questions for continued exploration
-- **Usage Statistics**: Token counts and costs
-- **Citations**: Embedded references to source materials
-
-### Extensibility
-The modular architecture with separate `perplexity_client.py` allows easy integration of additional LLM providers or API endpoints.
+- The `.gitignore` is configured to exclude all sensitive files
+- API keys are masked in the UI with password inputs
